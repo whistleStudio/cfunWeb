@@ -54,17 +54,19 @@ export default {
   }
   #navbar {
     width: 100%;
-    height: 55px;
+    height: 100%;
     /* background-color: pink; */
     margin: 0 auto;
     display: flex;
     justify-content: center;
+    align-items: center;
   }
   #navbar>div {
     width: 80%;
+    height: 55px;
   }
   #logo {
-    width: 160px;
+    width: calc(55px * 3.7);
     height: 55px;
     float: left;
     background: center/contain no-repeat;
@@ -79,7 +81,6 @@ export default {
     display: flex;
   }
   #navMenu>li {
-    color: rgb(100,100,100);
     font: bold 1.3rem/55px "Microsoft YaHei";
     text-align: center;
     /* width: 100px; */

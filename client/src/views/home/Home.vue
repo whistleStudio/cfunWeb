@@ -1,17 +1,21 @@
 <!--  -->
 <template>
-  <div>
-    <h1>home</h1>
+  <div id="home">
+    <h-software />
   </div>
 </template>
 
 <script>
+  const H_Software = ()=>import("views/home/H_Software")
+
   export default {
     data () {
       return {
       };
     },
-    components: {},
+    components: {
+      "h-software": H_Software
+    },
   }
 </script>
 
