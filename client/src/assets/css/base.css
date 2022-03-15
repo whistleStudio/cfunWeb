@@ -4,7 +4,9 @@
   margin: 0;
   padding: 0;
 }
-
+html {
+  overflow-y: overlay;
+}
 ul {
   list-style: none;
 }

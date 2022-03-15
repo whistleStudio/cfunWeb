@@ -1,6 +1,6 @@
 <!--  -->
 <template>
-  <div id="PNavbar" :style="PNavStyle">
+  <div id="PNavbar" :style="PNavStyle" @mousemove="navStyleFlag=0" @mouseleave="navStyleFlag=1">
     <nav-bar :navbarList="navbarList"  :logoStyle="logoStyle" :navCMenuBgc="PNavStyle.backgroundColor"
     :navStyleFlag="navStyleFlag"></nav-bar>
   </div>
@@ -13,13 +13,23 @@
     data () {
       return {
         navbarList:[
-          {id: 0, val: [{id: 0, title: "首页", eng: "home"}]},
-          {id: 1, val: [{id: 0, title: "产品", eng: "product"}]},
-          {id: 2, val: [{id: 0, title: "课程", eng: "course"}]},
-          {id: 3, val: [{id: 0, title: "赛事活动", eng: "activity"}]},
-          {id: 4, val: [{id: 0, title: "技术文档", eng: "document"}]},
-          {id: 5, val: [{id: 0, title: "解决方案", eng: "solution"}]},
-          {id: 6, val: [{id: 0, title: "服务支持", eng: "help"}]}
+          {id: 0, val: {id: 0, title: "首页", eng: "home"}},
+          {
+            id: 1, val: {id: 0, title: "产品", eng: "product"},
+            clist: [
+              {ctitle: "教学软件", img: "cl1.png"},
+              {ctitle: "非编程系列", img: "cl1.png"},
+              {ctitle: "编程系列", img: "cl1.png"},
+              {ctitle: "创意制作系列", img: "cl1.png"},
+              {ctitle: "机器人系列", img: "cl1.png"},
+              {ctitle: "其他", img: "cl1.png"}
+            ]
+          },
+          {id: 2, val: {id: 0, title: "课程", eng: "course"}},
+          {id: 3, val: {id: 0, title: "赛事活动", eng: "activity"}},
+          {id: 4, val: {id: 0, title: "技术文档", eng: "document"}},
+          {id: 5, val: {id: 0, title: "解决方案", eng: "solution"}},
+          {id: 6, val: {id: 0, title: "服务支持", eng: "help"}}
         ],
         navStyleFlag: 1,
       };
@@ -44,6 +54,11 @@
         } else {
           return {backgroundImage: `url(${require("assets/img/cflogo2.png")})`}
         }
+      }
+    },
+    methods: {
+      changeStyle () {
+        
       }
     }
   }
