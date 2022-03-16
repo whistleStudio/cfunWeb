@@ -1,18 +1,23 @@
 <!-- common navbar -->
 <template>
-  <div id="navbar">
+  <div id="navbar" @mouseleave="actTitleId=-1">
     <div>
       <div id="logo" :style="logoStyle">
-        <!-- <img :src=logoSrc alt="" width="55px" height="55px"> -->
       </div>
       <div id="nav">
         <ul id="navMenu">
           <li v-for="item in navbarList" :key="item.id" 
-          @mouseover="actTitleId=item.id">
-            <span @click="toPage(item.val.eng)">{{item.val.title}}</span>
-            <ul id="navCMenu" v-if="actTitleId === item.id">
-              <li></li>
-            </ul>
+          @mouseover="actTitleId=item.id" @mouseleave="titleMouseLeave(item)">
+            <span @click="toPage(item.val.eng)" :class="{titleHover: actTitleId===item.id}">{{item.val.title}}</span>
+            <div id="navCMenu" v-if="actTitleId===item.id && item.clist"
+            @mouseleave="actTitleId=-1">
+              <ul>
+                <li v-for="(c, i) in item.clist" :key="i">
+                  <span>{{c.ctitle}}</span>
+                  <div :style="{backgroundImage: `url(${require('img/'+c.img)})`}"></div>
+                </li>
+              </ul>
+            </div>
           </li>
         </ul>
       </div>
@@ -24,7 +29,7 @@
 export default {
   data () {
     return {
-      actTitleId: -1
+      actTitleId: -1,
     };
   },
   props: {
@@ -42,6 +47,11 @@ export default {
   methods: {
     toPage (path) {
       this.$router.push(path)
+    },
+    titleMouseLeave (item) {
+      if (!item.clist) {
+        this.actTitleId = -1
+      }
     }
   }
 }
@@ -94,25 +104,49 @@ export default {
     width: 100vw;
     height: 250px;
     background-color: white;
+    box-sizing: border-box;
+    border-top: 2px solid ghostwhite;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
-  #navCMenu>li {
-
-    font: 0.8rem/45px "Microsoft YaHei";
-    /* border-top: 1px solid rgba(255, 255, 255, 0.5); */
+  #navCMenu>ul {
+    display: flex;
+    width: 80%;
+    height: 200px;
+  }
+  #navCMenu li {
+    flex: auto;
+    height: 200px;
+    border-left: 1px solid gainsboro;
+    box-sizing: border-box;
+  }
+  #navCMenu li>span {
+    text-align: left;
+    text-indent: 15px;
+    display: block;
+    height: 40px;
+    font: bold 20px/40px "Microsoft YaHei";
+    border-left: 1px solid var(--mainColor);
+    color: rgb(150, 150, 150);
+    box-sizing: border-box;
+  }
+  #navCMenu li>div {
+    height: 90%;
+    width: 100%;
+    background: center/contain no-repeat;
   }
 
-  #navMenu>li>span:hover {
+  .titleHover {
     color: var(--mainColor);
     font-weight: bold;
   }
-  #navCMenu>li:hover {
-    color: var(--mainColor);
-    font-weight: bold;
-  }
-
   #navbar:hover {
     background-color: white;
     box-shadow: 1px 0 1px 1px ghostwhite;
     color: rgb(100,100,100)
+  }
+  #navCMenu li>span:hover {
+    color: var(--mainColor);
   }
 </style>

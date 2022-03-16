@@ -6,7 +6,7 @@
       <div id="resume">
         <h1>图形化编程软件</h1>
         <h2>支持开源硬件和人工智能扩展</h2>
-        <div id="startCode">开始编程</div>
+        <div id="startCode" @click="goAicode">开始编程</div>
       </div>
     </div>
   </div>
@@ -17,6 +17,11 @@
     data () {
       return {
       };
+    },
+    methods: {
+      goAicode () {
+        window.open('https://www.aicodestar.com', '_blank')
+      }
     },
     components: {},
   }
