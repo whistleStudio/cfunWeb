@@ -1,6 +1,8 @@
 <!-- solution -->
 <template>
-  <div></div>
+  <div>
+    <h1>solution</h1>
+  </div>
 </template>
 
 <script>

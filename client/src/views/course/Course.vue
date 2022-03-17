@@ -1,6 +1,8 @@
 <!-- course -->
 <template>
-  <div></div>
+  <div>
+    <h1>course</h1>
+  </div>
 </template>
 
 <script>

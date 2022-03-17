@@ -1,8 +1,8 @@
 <template>
   <div id="app">
-    <p-navbar />
+    <p-navbar v-if="$route.path!=='/documents'"/>
     <router-view></router-view>
-    <p-footbar />
+    <p-footbar v-if="$route.path!=='/documents'"/>
   </div>
 </template>
 

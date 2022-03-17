@@ -7,29 +7,29 @@
 </template>
 
 <script>
-  import Navbar from "components/common/navbar/Navbar"
+  const Navbar = ()=>import("components/common/navBar/Navbar")
 
   export default {
     data () {
       return {
         navbarList:[
-          {id: 0, val: {id: 0, title: "首页", eng: "home"}},
+          {id: 0, val: {id: 0, title: "首页", eng: "/home"}},
           {
-            id: 1, val: {id: 0, title: "产品", eng: "product"},
+            id: 1, val: {id: 0, title: "产品", eng: "/product"},
             clist: [
-              {ctitle: "教学软件", img: "cl1.png"},
-              {ctitle: "非编程系列", img: "cl1.png"},
-              {ctitle: "编程系列", img: "cl1.png"},
-              {ctitle: "创意制作系列", img: "cl1.png"},
-              {ctitle: "机器人系列", img: "cl1.png"},
-              {ctitle: "其他", img: "cl1.png"}
+              {ctitle: "教学软件", img: "cl0.png", path: "/product/software"},
+              {ctitle: "非编程系列", img: "cl1.png", path: "/product/nonprogram"},
+              {ctitle: "编程系列", img: "cl2.png", path: "/product/program"},
+              {ctitle: "创意制作系列", img: "cl3.png", path: "/product/creative"},
+              {ctitle: "机器人系列", img: "cl4.png", path: "/product/robot"},
+              {ctitle: "其他", img: "cl1.png", path: "/product/other"}
             ]
           },
-          {id: 2, val: {id: 0, title: "课程", eng: "course"}},
-          {id: 3, val: {id: 0, title: "赛事活动", eng: "activity"}},
-          {id: 4, val: {id: 0, title: "技术文档", eng: "document"}},
-          {id: 5, val: {id: 0, title: "解决方案", eng: "solution"}},
-          {id: 6, val: {id: 0, title: "服务支持", eng: "help"}}
+          {id: 2, val: {id: 0, title: "课程", eng: "/course"}},
+          {id: 3, val: {id: 0, title: "赛事活动", eng: "/activity"}},
+          {id: 4, val: {id: 0, title: "技术文档", eng: "/documents"}},
+          {id: 5, val: {id: 0, title: "解决方案", eng: "/solution"}},
+          {id: 6, val: {id: 0, title: "服务支持", eng: "/help"}}
         ],
         navStyleFlag: 1,
       };
@@ -42,14 +42,14 @@
     },
     computed:{
       PNavStyle () {
-        if (this.navStyleFlag && this.$route.path === "/home") {
+        if (this.navStyleFlag ) {
           return {backgroundColor: "none", color: "white", boxShadow: "none"}
         } else {
-          return {backgroundColor: "none", color: "black", boxShadow: "0px 1px 1px 1px ghostwhite"}
+          return {backgroundColor: "none", color: "black", boxShadow: "none"}
         }
       },
       logoStyle () {
-        if (this.navStyleFlag && this.$route.path === "/home") {
+        if (this.navStyleFlag ) {
           return {backgroundImage: `url(${require("assets/img/cflogo3.png")})`}
         } else {
           return {backgroundImage: `url(${require("assets/img/cflogo2.png")})`}

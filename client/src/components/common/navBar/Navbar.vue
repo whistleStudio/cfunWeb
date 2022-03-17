@@ -8,11 +8,11 @@
         <ul id="navMenu">
           <li v-for="item in navbarList" :key="item.id" 
           @mouseover="actTitleId=item.id" @mouseleave="titleMouseLeave(item)">
-            <span @click="toPage(item.val.eng)" :class="{titleHover: actTitleId===item.id}">{{item.val.title}}</span>
+            <span @click="toPage(item.val.eng, item.id)" :class="{titleHover: actTitleId===item.id}">{{item.val.title}}</span>
             <div id="navCMenu" v-if="actTitleId===item.id && item.clist"
             @mouseleave="actTitleId=-1">
               <ul>
-                <li v-for="(c, i) in item.clist" :key="i">
+                <li v-for="(c, i) in item.clist" :key="i" @click="toProduct(i)">
                   <span>{{c.ctitle}}</span>
                   <div :style="{backgroundImage: `url(${require('img/'+c.img)})`}"></div>
                 </li>
@@ -45,8 +45,11 @@ export default {
     // }
   },
   methods: {
-    toPage (path) {
-      this.$router.push(path)
+    toPage (path, k) {
+      if (!(k===1 || k===6)) this.$router.push(path)
+    },
+    toProduct (id) {
+      this.$router.push({path:"/product", query:{id}})
     },
     titleMouseLeave (item) {
       if (!item.clist) {
@@ -70,6 +73,7 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
+    box-shadow: none;
   }
   #navbar>div {
     width: 80%;
@@ -120,6 +124,7 @@ export default {
     height: 200px;
     border-left: 1px solid gainsboro;
     box-sizing: border-box;
+    color: rgb(150, 150, 150);
   }
   #navCMenu li>span {
     text-align: left;
@@ -128,7 +133,6 @@ export default {
     height: 40px;
     font: bold 20px/40px "Microsoft YaHei";
     border-left: 1px solid var(--mainColor);
-    color: rgb(150, 150, 150);
     box-sizing: border-box;
   }
   #navCMenu li>div {
@@ -146,7 +150,7 @@ export default {
     box-shadow: 1px 0 1px 1px ghostwhite;
     color: rgb(100,100,100)
   }
-  #navCMenu li>span:hover {
-    color: var(--mainColor);
+  #navCMenu li:hover {
+    color: var(--mainColor) ;
   }
 </style>

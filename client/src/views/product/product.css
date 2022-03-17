@@ -1,0 +1,14 @@
+.topBanner {
+  width: 100%;
+  height: 500px;
+  background: center/cover no-repeat;
+}
+.content {
+  width: 60%;
+  margin: 0 auto;
+  margin-bottom: 5rem;
+}
+.content img {
+  display: block;
+  width: 100%;
+}
