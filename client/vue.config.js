@@ -10,18 +10,23 @@ module.exports = {
         "components": "@/components"
       }
     },
-    // devServer: {
-    //   proxy: {
-    //     "/api": {
-    //       target: "http://127.0.0.1:8082",
-    //       ws: true,
-    //       changeOrigin: true,
-    //       pathRewrite: {
-    //         "^/api": ""
-    //       }
-    //     }
-    //   }
-    // },
+    devServer: {
+      proxy: {
+        "/api": {
+          target: "http://127.0.0.1:8088",
+          ws: true,
+          changeOrigin: true,
+          pathRewrite: {
+            "^/api": "/api"
+          }
+        },
+        "/*.assets": {
+          target: "http://127.0.0.1:8088",
+          ws: true,
+          changeOrigin: true,
+        }
+      }
+    },
     optimization: {
       minimize: true,
       minimizer: [

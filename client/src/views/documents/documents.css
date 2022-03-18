@@ -13,7 +13,7 @@ a {
 }
 #directory {
   width: 300px;
-  height: 100vh;
+  height: 100%;
   background-color: rgb(70,70,70);
   position: fixed;
   overflow-y: scroll;
@@ -44,20 +44,21 @@ a {
   border-radius: 10px;
   border: 1px solid gray;
   outline: none;
+  text-indent: 1rem;
   
 }
 #doc-tree {
   color: white;
   background: rgb(70,70,70);
 }
-.hard-type {
+.dir-type {
   display: block;
   width: 100%;
   font:  17px/34px sans-serif;
   padding-left: 30px;
   cursor: pointer;
 }
-.hard-type-active {
+.dir-type-active {
   display: block;
   width: 100%;
   color: rgb(50, 110, 170);
@@ -75,6 +76,7 @@ a {
 }
 .doc-type {
   width: 100%;
+  font:  15px/30px sans-serif;
   padding-left: 30px;
   color: rgb(50, 50, 50);
   background-color: rgba(225, 225, 225);
@@ -96,6 +98,9 @@ a {
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid rgba(200, 200, 200, 0.5);
+}
+#main-head>div:first-of-type>a {
+  cursor: pointer;
 } 
 #bread-nav {
   color: rgb(50, 50, 50);
@@ -154,15 +159,15 @@ a {
   background: url('~img/documents/toTop115x140.png') center no-repeat;
   background-size: contain;
   cursor: pointer;
-  bottom: 20px;
-  right: 20px;
+  bottom: 50px;
+  right: 50px;
   
 }
 
 
 
 /* hover */
-.hard-type:hover {
+.dir-type:hover {
   background-color: rgb(100,100,100);
 }
 .doc-type:hover {
@@ -175,12 +180,12 @@ a {
 /* animation */
 @keyframes jump {
   0% {
-    bottom: 20px
+    bottom: 50px
   }
   50% {
-    bottom: 40px;
+    bottom: 70px;
   }
   100% {
-    bottom: 20px
+    bottom: 50px
   }
 }
