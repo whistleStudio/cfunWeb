@@ -29,7 +29,14 @@
           {id: 3, val: {id: 0, title: "赛事活动", eng: "/activity"}},
           {id: 4, val: {id: 0, title: "技术文档", eng: "/documents"}},
           {id: 5, val: {id: 0, title: "解决方案", eng: "/solution"}},
-          {id: 6, val: {id: 0, title: "服务支持", eng: "/help"}}
+          {
+            id: 6, val: {id: 0, title: "服务支持", eng: "/help"},
+            clist: [
+              {ctitle: "常见问题", path: "/support/question"},
+              {ctitle: "在线商城", path: "/support/mall"},
+              {ctitle: "联系我们", path: "/support/contact"}
+            ]
+          }
         ],
         navStyleFlag: 1,
       };

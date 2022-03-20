@@ -1,0 +1,168 @@
+#question {
+  padding-bottom: 10rem;
+  background-color: rgb(245, 245, 245);
+  color: rgb(80,80,80);
+}
+.topBanner {
+  width: 100%;
+  height: 300px;
+  background: url("~img/support/banner.jpg") center/cover no-repeat;
+}
+#que {
+  width: 40%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#search {
+  width: 100%;
+  margin-top: 10rem;
+}
+h2 {
+  display: block;
+  height: 3rem;
+  text-align: center;
+}
+#search>div {
+  margin: 0 auto;
+  width: 70%;
+  height: 2rem;
+  position: relative;  
+}
+input {
+  margin-top: 2rem;
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 1px solid gainsboro;
+  border-radius: 0.3rem;
+  text-indent: 1rem;
+}
+input:focus {
+  outline: none;
+}
+input::placeholder {
+  color: gainsboro;
+}
+#search>div>div {
+  /* background-color: red; */
+  top: 0;
+  right: 0;
+  position: absolute;
+  width: 2rem;
+  height: 2rem;
+  background: url("~img/support/search.png") center/contain no-repeat;
+  cursor: pointer;
+  border-left: 1px solid gainsboro;
+  box-sizing: border-box;
+}
+#more {
+  margin-top: 2rem;
+  width: 100%;
+  height: 300px;
+  background-color: white;
+  border-radius: 0.3rem;
+}
+#more>ul {
+  height: 60px;
+  display: flex;
+  box-sizing: border-box;
+  border-bottom: 1px solid rgb(245, 245, 245);
+}
+#more>ul>li {
+  flex: 1;
+  box-sizing: border-box;
+  border-right: 1px solid ghostwhite;
+  text-align: center;
+  font: 1rem/60px "Microsoft YaHei";
+  cursor: pointer;
+}
+#more>ul>li:last-of-type {
+  border: none;
+}
+#more>ul>li:hover {
+  font-weight: bold;
+  color: white;
+  background-color: var(--rFontColorA);
+}
+#more>div {
+  height: 240px;
+  /* background-color: orange; */
+}
+#common>ul {
+  width: 90%;
+  height: 210px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+}
+#common li {
+  flex: none;
+  width: 50%;
+  height: 70px;
+  font: 1rem/70px sans-serif;
+  cursor: pointer;
+}
+#common li:hover {
+  color: var(--rFontColorA);
+}
+#common>div {
+  height: 30px;
+  width: 90%;
+  margin: 0 auto;
+  cursor: pointer;
+}
+#common>div>span {
+  height: 15px;
+  color: gainsboro;
+  font-size: 12px;
+  line-height: 15px;
+}
+.spanBlue {
+  color: var(--rFontColorA) !important;
+}
+#common>div>div {
+  margin-top: 2px;
+  width: 100%;
+  height: 3px;
+  background-color: ghostwhite;
+  position: relative;
+}
+#line {
+  position: absolute;
+  left: 0;
+  width: 5%;
+  height: 3px;
+  background-color: var(--rFontColorA);
+  z-index: 2;
+}
+.toBlue {
+  animation: turnBlue 0.8s forwards;
+}
+
+@keyframes turnBlue {
+  from {width: 5%;}
+  to {width: 100%;}
+}
+
+#service {
+  margin-top: 3rem;
+  width: 100%;
+}
+
+#service>ul {
+  margin-top: 2rem;
+  /* background-color: yellow; */
+  width: 25%;
+  margin: 0 auto;
+  height: 200px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+#service li {
+  width: 180px;
+  height: 180px;
+  background-color: gainsboro;
+}

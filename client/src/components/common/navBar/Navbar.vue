@@ -8,14 +8,19 @@
         <ul id="navMenu">
           <li v-for="item in navbarList" :key="item.id" 
           @mouseover="actTitleId=item.id" @mouseleave="titleMouseLeave(item)">
-            <span @click="toPage(item.val.eng, item.id)" :class="{titleHover: actTitleId===item.id}">{{item.val.title}}</span>
-            <div id="navCMenu" v-if="actTitleId===item.id && item.clist"
+            <span @click="toPage1(item.val.eng, item.id)" :class="{titleHover: actTitleId===item.id}">{{item.val.title}}</span>
+            <div id="navCMenu1" v-if="actTitleId===item.id && item.clist && item.id===1"
             @mouseleave="actTitleId=-1">
-              <ul>
+              <ul  class="hor">
                 <li v-for="(c, i) in item.clist" :key="i" @click="toProduct(i)">
                   <span>{{c.ctitle}}</span>
                   <div :style="{backgroundImage: `url(${require('img/'+c.img)})`}"></div>
                 </li>
+              </ul>
+            </div>
+            <div v-else-if="actTitleId===item.id && item.clist" id="navCMenu2">
+              <ul class="ver">
+                <li v-for="(c, i) in item.clist" :key="i" @click="toPage2(c.path, i)">{{c.ctitle}}</li>
               </ul>
             </div>
           </li>
@@ -45,8 +50,12 @@ export default {
     // }
   },
   methods: {
-    toPage (path, k) {
+    toPage1 (path, k) {
       if (!(k===1 || k===6)) this.$router.push(path)
+    },
+    toPage2 (path, k) {
+      if (k===1) window.open("https://cfunworld.taobao.com/category.htm?spm=a1z10.5-c.w4010-6544316521.2.5832602fxUYF1K&search=y")
+      else this.$router.push(path)
     },
     toProduct (id) {
       this.$router.push({path:"/product", query:{id}})
@@ -96,12 +105,10 @@ export default {
   #navMenu>li {
     font: bold 1.3rem/55px "Microsoft YaHei";
     text-align: center;
-    /* width: 100px; */
     margin-left: 60px;
     cursor: pointer;
-    /* color: var(--navColor); */
   }
-  #navCMenu {
+  #navCMenu1 {
     position: absolute;
     left: 0;
     top: 75px;
@@ -114,19 +121,19 @@ export default {
     justify-content: center;
     align-items: center;
   }
-  #navCMenu>ul {
+  #navCMenu1>.hor {
     display: flex;
     width: 80%;
     height: 200px;
   }
-  #navCMenu li {
+  .hor>li {
     flex: auto;
     height: 200px;
     border-left: 1px solid gainsboro;
     box-sizing: border-box;
     color: rgb(150, 150, 150);
   }
-  #navCMenu li>span {
+  .hor>li>span {
     text-align: left;
     text-indent: 15px;
     display: block;
@@ -135,10 +142,20 @@ export default {
     border-left: 1px solid var(--mainColor);
     box-sizing: border-box;
   }
-  #navCMenu li>div {
+  .hor>li>div {
     height: 90%;
     width: 100%;
     background: center/contain no-repeat;
+  }
+  #navCMenu2 {
+    margin-top: 0.5rem;
+    background-color: white;
+    font:  1.1rem/2.6rem "Microsoft YaHei";
+    color: rgb(150, 150, 150);
+  }
+  .ver>li {
+    box-sizing: border-box;
+    border-top: 1px solid var(--rFontColorAA);
   }
 
   .titleHover {
@@ -150,7 +167,7 @@ export default {
     box-shadow: 1px 0 1px 1px ghostwhite;
     color: rgb(100,100,100)
   }
-  #navCMenu li:hover {
+  .hor>li:hover, .ver>li:hover {
     color: var(--mainColor) ;
   }
 </style>

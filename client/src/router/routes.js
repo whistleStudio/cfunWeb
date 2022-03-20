@@ -4,6 +4,9 @@ const Course = ()=>import("views/course/Course")
 const Activity = ()=>import("views/activity/Activity")
 const Solution = ()=>import("views/solution/Solution")
 const Documents = ()=>import("views/documents/Documents")
+const Question = ()=>import("views/support/Question")
+const Contact = ()=>import("views/support/Contact")
+const Measures = ()=>import("views/support/Measures")
 
 const routes = [
   {
@@ -33,6 +36,18 @@ const routes = [
   {
     path: "/documents",
     component: Documents
+  },
+  {
+    path: "/support/question",
+    component: Question
+  },
+  {
+    path: "/support/contact",
+    component: Contact
+  },
+  {
+    path: "/support/measures",
+    component: Measures
   }
 ]
 
