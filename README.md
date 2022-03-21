@@ -16,3 +16,7 @@ routes有children时，正常跳转需在父级路由里面用router-view
 support - contact ok
 support - question 基本也完成了
 搜索逻辑打算 数据库存储问题以及关键词，搜索词与关键词正则，匹配结果加权显示
+
+## [202203211433]
+
+support - measures 页面大致框架

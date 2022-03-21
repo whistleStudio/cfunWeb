@@ -12,7 +12,8 @@
       </div>
       <div id="more">
         <ul>
-          <li v-for="(v, i) in qs" :key="i" @mouseenter="actCate=i">{{v.cate}}</li>
+          <li v-for="(v, i) in qs" :key="i" :class="{cateHover:actCate===i}"
+          @mouseenter="actCate=i">{{v.cate}}</li>
         </ul>
         <div id="common">
           <ul>
@@ -51,7 +52,8 @@ export default {
   methods: {
     toPage () {
       this.$router.push("/support/measures")
-    }
+    },
+
   }
 }
 </script>
