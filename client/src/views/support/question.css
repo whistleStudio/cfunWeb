@@ -27,7 +27,7 @@ h2 {
 #search>div {
   margin: 0 auto;
   width: 70%;
-  height: 2rem;
+  height: 2.5rem;
   position: relative;  
 }
 input {
@@ -50,12 +50,17 @@ input::placeholder {
   top: 0;
   right: 0;
   position: absolute;
-  width: 2rem;
-  height: 2rem;
+  width: 2.5rem;
+  height: 2.5rem;
   background: url("~img/support/search.png") center/contain no-repeat;
   cursor: pointer;
   border-left: 1px solid gainsboro;
   box-sizing: border-box;
+  border-top-right-radius: 0.3rem;
+  border-bottom-right-radius:0.3rem;
+}
+#search>div>div:hover {
+  box-shadow: 1px 1px 1px 1px gainsboro inset;
 }
 #more {
   margin-top: 2rem;

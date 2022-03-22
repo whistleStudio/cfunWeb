@@ -6,20 +6,48 @@
       <div id="menu">
         <div class="lhplbs">问题分类</div>
         <ul>
-          <li v-for="(v, i) in qs" :key="i" @click="actCate=i"
+          <li v-for="(v, i) in qs" :key="i" @click="menuLiClick(i)"
           :class="{menuLiAct: actCate===i}"
           class="lhplbs">{{v.cate}}</li>
         </ul>
       </div>
       <div id="main">
         <div id="nav">
-          <div id="bread"></div>
+          <div id="bread">
+            <span>{{qs[actCate].cate}}</span> 
+            <div id="navigator">
+              <ul>
+                <li @click="changePage(-1)" id="liPre" class="pageNum">&lt;</li>
+                <li v-for="(v, i) in Array(pageCount)" :key="i" @click="actPage=i" 
+                :class="{pageNumAct: actPage===i}"
+                class="pageNum">{{i+1}}</li>
+                <li @click="changePage(1)" id="liNxt" class="pageNum">&gt;</li>
+                <li id="liTo">到 <input type="text" @focus="inputFocus" :value="actPage+1" ref="toP"> 页<span @click="enterPage">确认</span></li>
+              </ul>
+            </div>
+          </div>
           <div id="search">
             <input type="text" placeholder="请输入要搜索的内容">
             <div></div> 
           </div>  
         </div>
-        <div id="content"></div>
+        <div id="content">
+          <div v-if="searchMode===1">
+            <ul id="qList" v-if="showQs.length">
+              <li v-for="(v, i) in showQs" :key="i" @click="qListLiClick(v)">
+                <span>- {{v.title}}</span>
+                <div v-if="v.keyword">
+                  <span class="keywordTag" v-for="(kv, ki) in v.keyword.split(' ')" :key="ki">{{kv}}</span>
+                </div>     
+              </li>
+            </ul>
+          </div>
+          <div id="answer" v-else-if="searchMode===0&&curAnswer.name">
+            <iframe :src="`questions/${curAnswer.dir}/${curAnswer.name}/${curAnswer.name}.html`" frameborder="0" ref="ifr"
+            width="100%"  height="100%" scrolling="none"
+            ></iframe>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -32,85 +60,77 @@ export default {
     return {
       qs,
       actCate: 0,
+      actPage: 0,
+      curQs: new Array(32).fill(0),
+      searchMode: 1,
+      curAnswer: {
+        dir: "",
+        name: ""
+      }
     }
+  },
+  computed: {
+    pageCount: function () {
+      return Math.ceil(this.curQs.length / 15)
+    },
+    showQs: function () {
+      if (this.actPage === this.pageCount-1) {
+        return this.curQs.slice(this.actPage*15, this.curQs.length)
+      } else return this.curQs.slice(this.actPage*15, (this.actPage+1)*15)
+    }
+  },
+  methods: {
+    menuLiClick (i) {
+      this.actCate = i
+      this.reqQueList(i)
+    },
+    qListLiClick (v) {
+      this.searchMode = 0
+      this.curAnswer.dir = qs[v.cate].cate
+      this.curAnswer.name = v.title
+      console.log(this.curAnswer.dir, this.curAnswer.name)
+    },
+    changePage (k) {
+      let aP = this.actPage
+      if (k<0) {
+        this.actPage = aP>0 ? aP-1 : aP
+      } else {
+        this.actPage = aP===this.pageCount-1 ? aP : aP+1
+      }
+    },
+    inputFocus () {
+      document.onkeydown = ev=> {
+        if (ev.key === "Enter") {
+          this.enterPage()
+        }
+      }
+    },
+    enterPage () {
+      let toP = parseInt(this.$refs.toP.value)
+      if (toP>0) {
+        this.actPage = toP>=this.pageCount ? this.pageCount-1 : toP-1
+        this.$refs.toP.value = this.actPage+1
+      } else {
+        this.actPage = 0
+        this.$refs.toP.value = 1
+      }
+      this.$refs.toP.blur()      
+    },
+    reqQueList (i) {
+      fetch (`/api/que/getQueList?cate=${i}`)
+      .then (res => res.json()
+      .then (data => {
+        if (!data.err) {
+          this.curQs = data.queList
+        }
+        else alert(data.msg)
+      }))
+    }
+  },
+  created () {
+    this.reqQueList(0)
   }
 }
 </script>
 
-<style scoped>
-.topBanner {
-  width: 100%;
-  height: 150px;
-  background: url("~img/support/banner.jpg") center/cover no-repeat;
-}
-#measures>div:last-of-type {
-  position: relative;
-  min-height: calc(100vh - 150px);
-  background-color: rgb(245, 245, 245);
-}
-#menu {
-  position: absolute;
-  width: 200px;
-  height: 100%;
-  background-color: white;
-  
-}
-.lhplbs {
-  width: 100%;
-  height: 70px;
-  line-height: 70px;
-  padding-left: 2rem;
-  box-sizing: border-box;
-}
-#menu>div {
-  background-color: white;
-  font: bold 1.3rem/60px "Microsoft YaHei";
-  /* border-bottom: 1px solid gray; */
-  background-color: gainsboro;
-  color: white;
-  cursor: default;
-}
-#menu li {
-  padding-left: 2rem;
-  font-size: 1.2rem;
-
-  background-color: white;
-  cursor: pointer;
-}
-#menu li:hover {
-  color: var(--rFontColorA);
-}
-.menuLiAct {
-  color: var(--rFontColor);
-  font-weight: bold;
-}
-#nav {
-  margin-left: 200px;
-  /* width: 90%; */
-  height: 100px;
-  background-color: red;
-}
-#search {
-  float: right;
-  width: 40%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  
-}
-input {
-  display: block;
-  width: 100%;
-  height: 40px;
-  border: 1px solid gainsboro;
-  border-radius: 0.3rem;
-  text-indent: 1rem;
-}
-input:focus {
-  outline: none;
-}
-input::placeholder {
-  color: gainsboro;
-}
-
-</style>
+<style scoped src="./measure.css"></style>

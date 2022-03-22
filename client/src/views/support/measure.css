@@ -1,0 +1,204 @@
+.topBanner {
+  width: 100%;
+  height: 150px;
+  background: url("~img/support/banner.jpg") center/cover no-repeat;
+}
+#measures>div:last-of-type {
+  position: relative;
+  height: calc(100vh - 150px);
+  background-color: rgb(245, 245, 245);
+}
+#menu {
+  position: absolute;
+  width: 200px;
+  height: 100%;
+  background-color: white;
+  
+}
+.lhplbs {
+  width: 100%;
+  height: 70px;
+  line-height: 70px;
+  padding-left: 2rem;
+  box-sizing: border-box;
+}
+#menu>div {
+  background-color: white;
+  font: bold 1.3rem/60px "Microsoft YaHei";
+  background-color: gainsboro;
+  color: white;
+  cursor: default;
+}
+#menu li {
+  padding-left: 2rem;
+  font-size: 1.2rem;
+
+  background-color: white;
+  cursor: pointer;
+}
+#menu li:hover {
+  color: var(--rFontColorA);
+}
+.menuLiAct {
+  color: var(--rFontColor);
+  font-weight: bold;
+}
+#nav {
+  margin-left: 250px;
+  height: 70px;
+  width: 75%;
+  /* background-color: red; */
+}
+#bread {
+  float: left;
+  font: 1.1rem/70px "Microsoft YaHei";
+
+  /* background-color: green; */
+}
+#bread>span {
+  display: inline-block;
+  font-weight: bold;
+}
+#navigator {
+  margin-left: 2rem;
+  display: inline-block;
+  vertical-align: middle;
+}
+#navigator>ul {
+  /* background-color: orange; */
+  display: flex;
+  align-items: center;
+}
+.pageNum {
+  width: 30px;
+  height: 30px;
+  font: 1rem/30px sans-serif;
+  border: 1px solid gainsboro;
+  text-align: center;
+  border-radius: 0.2rem;
+  margin-right: 0.3rem;
+  box-sizing: border-box;
+  cursor: pointer;
+  background-color: white;
+}
+.pageNumAct {
+  color: white;
+  background-color: var(--rFontColorA);
+}
+.pageNum:hover {
+  border-color: var(--rFontColorAA);
+}
+#liTo {
+  margin-left: 1.5rem;
+  font: 1rem/30px sans-serif;
+}
+#liTo>input {
+  display: inline-block;
+  width: 40px;
+  height: 30px;
+  text-indent: 0.5rem;
+}
+#liTo>span {
+  margin-left: 0.5rem;
+  display: inline-block;
+  width: 60px;
+  text-align: center;
+  height: 30px;
+  background-color: var(--rFontColorAA);
+  color: white;
+  border-radius: 0.2rem;
+  cursor: pointer;
+}
+#liTo>span:hover {
+  background-color: var(--rFontColorA);
+}
+#search {
+  float: right;
+  width: 40%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+input {
+  display: block;
+  width: 100%;
+  height: 40px;
+  border: 1px solid gainsboro;
+  border-radius: 0.3rem;
+  text-indent: 1rem;
+  
+}
+input:focus {
+  outline: none;
+}
+input::placeholder {
+  color: gainsboro;
+}
+#search>div {
+  /* background-color: red; */
+  top: 50%;
+  transform: translateY(-50%);
+  right: 0;
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  background: url("~img/support/search.png") center/contain no-repeat;
+  cursor: pointer;
+  border-left: 1px solid gainsboro;
+  box-sizing: border-box;
+  border-top-right-radius: 0.4rem;
+  border-bottom-right-radius:0.4rem;
+}
+#search>div:hover {
+  box-shadow: 0.5px 0.5px 1px 1px gainsboro inset;
+}
+#content {
+  width: 75%;
+  margin-left: 250px;
+  height: 80%;
+  background-color: white;
+  height: calc(100vh - 250px);
+}
+#content>div {
+  height: 100%;
+}
+#qList {
+  height: 100%;
+}
+#qList>li {
+  width: 100%;
+  height: 6.6%;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid rgb(245, 245, 245);
+  box-sizing: border-box;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+#qList>li:hover {
+  color: var(--rFontColorA);
+  font-weight: bold;
+}
+#qList>li>span:first-of-type {
+  text-indent: 1.5rem;
+}
+#qList>li:last-of-type {
+  border-bottom: none;
+}
+#qList>li>div{
+  display: inline-block;
+  margin-left: 2rem;
+}
+.keywordTag {
+  margin-left: 0.5rem;
+  padding: 0.1rem;
+  border: 1px solid gainsboro;
+  font-size: 0.8rem;
+  border-radius: 0.2rem;
+  color: var(--rFontColorAA)
+}
+#answer {
+  width: 100%;
+  height: 100%;
+}

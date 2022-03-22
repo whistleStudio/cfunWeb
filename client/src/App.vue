@@ -2,7 +2,7 @@
   <div id="app">
     <p-navbar v-if="$route.path!=='/documents'"/>
     <router-view></router-view>
-    <p-footbar v-if="$route.path!=='/documents'"/>
+    <p-footbar v-if="$route.path!=='/documents'&&$route.path!=='/support/measures'"/>
   </div>
 </template>
 
