@@ -1,52 +1,22 @@
 {
   "qs": [
     {"cate": "编程软件", "common": [
-      {"q": "· aaaa", "link": "xxx"},
-      {"q": "· aaaa", "link": "xxx"},
-      {"q": "· aaaa", "link": "xxx"},
-      {"q": "· aaaa", "link": "xxx"},
-      {"q": "· aaaa", "link": "xxx"},
-      {"q": "· aaaa", "link": "xxx"}
+
     ]},
     {"cate": "开源硬件", "common": [
-      {"q": "· bbb", "link": "xxx"},
-      {"q": "· bbb", "link": "xxx"},
-      {"q": "· bbb", "link": "xxx"},
-      {"q": "· bbb", "link": "xxx"},
-      {"q": "· bbb", "link": "xxx"},
-      {"q": "· bbb", "link": "xxx"}
+
     ]},
     {"cate": "智能机器人", "common": [
-      {"q": "· ccc", "link": "xxx"},
-      {"q": "· ccc", "link": "xxx"},
-      {"q": "· ccc", "link": "xxx"},
-      {"q": "· ccc", "link": "xxx"},
-      {"q": "· ccc", "link": "xxx"},
-      {"q": "· ccc", "link": "xxx"}
+      "路口转弯时 原地打转找不到对应路口", "小车冲出起始区后跑偏"
     ]},
     {"cate": "人工智能","common": [
-      {"q": "· ddd", "link": "xxx"},
-      {"q": "· ddd", "link": "xxx"},
-      {"q": "· ddd", "link": "xxx"},
-      {"q": "· ddd", "link": "xxx"},
-      {"q": "· ddd", "link": "xxx"},
-      {"q": "· ddd", "link": "xxx"}
+
     ]},
     {"cate": "竞赛培训", "common": [
-      {"q": "· eee", "link": "xxx"},
-      {"q": "· eee", "link": "xxx"},
-      {"q": "· eee", "link": "xxx"},
-      {"q": "· eee", "link": "xxx"},
-      {"q": "· eee", "link": "xxx"},
-      {"q": "· eee", "link": "xxx"}
+
     ]},
     {"cate": "其他", "common": [
-      {"q": "· fff", "link": "xxx"},
-      {"q": "· fff", "link": "xxx"},
-      {"q": "· fff", "link": "xxx"},
-      {"q": "· fff", "link": "xxx"},
-      {"q": "· fff", "link": "xxx"},
-      {"q": "· fff", "link": "xxx"}
+
     ]}
   ]  
 }

@@ -46,6 +46,7 @@ const routes = [
     component: Contact
   },
   {
+    name: "measures",
     path: "/support/measures",
     component: Measures
   }

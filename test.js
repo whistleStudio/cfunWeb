@@ -1,3 +1,2 @@
-a = "a"
-b = "abc"
-console.log(parseInt(""))
+let s = "sadasddasd"
+console.log(s.substring(0,8))

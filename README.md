@@ -26,7 +26,7 @@ question 数据库结构
   cate: Number,
   keyword: String,
   qid: Number,
-  link: String,
+  title: String,
   regDate: {type: Date, default: new Date()},
 }
 ## [202203222200]
@@ -34,3 +34,6 @@ question 数据库结构
 把静态文件都放在了vue的public, 这样文件目录就清楚多了
 点击menu分类,请求数据库该类别下所有问题,点击查看具体
 还差 面包屑导航针对不同状态切换, 问题检索, 还有就是404, 上级目录的部分展示
+## [202203231817]
+官网常见问题页面完成，搜索功能会将关键词与数据库文档的keyword，title字段比较，匹配成功的返回；如搜索“电机”，可能返回的文档为“电机旋转”，“电的机器”等；
+目前只录进去两三个文档，智能机器人板块，问题文档和技术文档格式要求类似，markdown编辑转HTML
