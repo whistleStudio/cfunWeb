@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+﻿const mongoose = require('mongoose');
 const DbName = 'cfunweb'
 const PORT = 27017
 
@@ -18,9 +18,9 @@ async function main() {
   console.log(`db:${DbName} connected on port:${PORT}`)
   var newDoc = new Qusetion({
     cate: 2,
-    title: "路口转弯时 原地打转找不到对应路口",
-    keyword: "转圈",
-    qid: 22020112503,
+    title: "路口转弯后 程序异常 好像有跳程序的现象",
+    keyword: "不执行 路线随机",
+    qid: 22020112504,
   })
   await newDoc.save()
   console.log("new Doc insert OK")

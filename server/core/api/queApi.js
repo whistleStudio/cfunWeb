@@ -4,6 +4,7 @@ const Qusetion = require("../db/Question")
 
 rt.get("/getQueList", (req, res) => {
   let {cate} = req.query
+  cate = parseInt(cate)
   try {
     ;(async ()=>{
       let queList = await Qusetion.find({cate})
