@@ -40,3 +40,8 @@ question 数据库结构
 ## [202203231919]
 修复一个小BUG api: /getQueList cate需要是一个number类型
 又加了一个文档，动态添加测试OK
+## [202204251724]
+进一步优化首页加载速度
+去除了vue import, 本来就是external的 忘记删了，导致打包还是会打；
+安装了插件compression-webpack-plugin，用于输出gzip格式，服务器端nginx配置也需要微调
+(另安装了打包分析插件webpack-bundle-analyzer)
