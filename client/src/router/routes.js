@@ -1,12 +1,12 @@
-const Home = ()=>import("views/home/Home")
-const Product = ()=>import("views/product/Product")
-const Course = ()=>import("views/course/Course")
-const Activity = ()=>import("views/activity/Activity")
-const Solution = ()=>import("views/solution/Solution")
-const Documents = ()=>import("views/documents/Documents")
-const Question = ()=>import("views/support/Question")
-const Contact = ()=>import("views/support/Contact")
-const Measures = ()=>import("views/support/Measures")
+const Home = res => require(["views/home/Home"],res)
+const Product = res => require(["views/product/Product"],res)
+const Course = res => require(["views/course/Course"],res)
+const Activity = res => require(["views/activity/Activity"],res)
+const Solution = res => require(["views/solution/Solution"],res)
+const Documents = res => require(["views/documents/Documents"],res)
+const Question = res => require(["views/support/Question"],res)
+const Contact = res => require(["views/support/Contact"],res)
+const Measures = res => require(["views/support/Measures"],res)
 
 const routes = [
   {

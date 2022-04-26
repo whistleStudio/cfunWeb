@@ -45,7 +45,7 @@
   float: left;
   width: 60%;
   height: 100%;
-  background: url("~img/home/softwareC.png") center/contain no-repeat;
+  background: url("~img/home/softwareC.gif") center/contain no-repeat;
 }
 #resume {
   float: right;

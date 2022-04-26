@@ -45,3 +45,6 @@ question 数据库结构
 去除了vue import, 本来就是external的 忘记删了，导致打包还是会打；
 安装了插件compression-webpack-plugin，用于输出gzip格式，服务器端nginx配置也需要微调
 (另安装了打包分析插件webpack-bundle-analyzer)
+## [202204261613]
+productionSourceMap:false
+压缩了首页几张图片
