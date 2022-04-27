@@ -69,13 +69,11 @@
         } else this.actDir = di
       },
       fileClick (di, fi) {
-        this.reqDoc(di, fi)
-        this.breadNav = `\\${this.dirList[di]} \\${this.fileList[di][fi]}`
+        this.reqDoc(di, fi) 
         this.searchSta = 0
       },
       searchLiClick (v) {
         this.curContent = ""
-        this.breadNav = `\\${this.dirList[di]} \\${this.fileList[di][fi]}`
         this.reqDoc(v[0], v[1])
         this.searchSta = 0
       },
@@ -92,6 +90,7 @@
         .then(res => res.text()
         .then(data => {
           this.curContent = data
+          this.breadNav = `\\${this.dirList[di]} \\${this.fileList[di][fi]}`
         }))
       },
       reqHome () {

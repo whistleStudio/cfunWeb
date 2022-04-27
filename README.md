@@ -48,3 +48,5 @@ question 数据库结构
 ## [202204261613]
 productionSourceMap:false
 压缩了首页几张图片
+## [20220427]
+document - 修复关键词搜索后导航栏问题
