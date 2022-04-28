@@ -1,12 +1,12 @@
 const TerserPlugin = require("terser-webpack-plugin")
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
+// const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 const CompressionPlugin = require("compression-webpack-plugin")
 
 module.exports = {
   productionSourceMap:false,
   configureWebpack: {
     plugins: [
-      new BundleAnalyzerPlugin(),
+      // new BundleAnalyzerPlugin(),
       new CompressionPlugin({
         test: /\.(js|css)(\?.*)?$/i,//需要压缩的文件正则
         threshold: 10240,//文件大小大于这个值时启用压缩

@@ -50,3 +50,7 @@ productionSourceMap:false
 压缩了首页几张图片
 ## [202204271630]
 document - 修复关键词搜索后导航栏问题
+## [202204281119]
+超级大加速！
+1 使用路过图床，外链图片（18s->6s）
+2 新增vue-lazyload模块，用于懒加载图片，提速，并且有了loading,error占位图

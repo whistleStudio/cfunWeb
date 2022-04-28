@@ -14,7 +14,8 @@
               <ul  class="hor">
                 <li v-for="(c, i) in item.clist" :key="i" @click="toProduct(i)">
                   <span>{{c.ctitle}}</span>
-                  <div :style="{backgroundImage: `url(${require('img/'+c.img)})`}"></div>
+                  <!-- <div :style="{backgroundImage: `url(${require('img/'+c.img)})`}"></div> -->
+                  <div :style="{backgroundImage: `url(${c.img})`}"></div>
                 </li>
               </ul>
             </div>
