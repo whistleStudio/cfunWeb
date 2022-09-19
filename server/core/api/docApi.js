@@ -4,7 +4,7 @@ const {getFiles} = require("../utils/getDocs")
 var path = require('path')
 
 let {dirList, fileList, _dirList, _fileList} = getFiles(path.join(__dirname, '../../public/docs/html'))
-
+/* 0919更新后用不到了 */
 rt.get("/getDocList", (req, res) => {
   ;({dirList, fileList, _dirList, _fileList} = getFiles(path.join(__dirname, '../../public/docs/html')))
   res.json({err:0, dirList, fileList})

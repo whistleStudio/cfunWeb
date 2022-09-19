@@ -88,7 +88,7 @@ a {
 }
 
 #main {
-  width: 900px;
+  width: calc(100vw - 320px);
   height: 100vh;
   margin-left: 320px;
 }
@@ -164,6 +164,10 @@ a {
   
 }
 
+.main-iframe {
+  height: calc(100vh - 80px);
+  width: calc(100vw - 320px);
+}
 
 
 /* hover */

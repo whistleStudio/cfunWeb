@@ -1,2 +1,2 @@
-let s = "sadasddasd"
-console.log(s.substring(0,8))
+let a = {0: "xxx", 1: "yyy"}
+console.log(a[0])

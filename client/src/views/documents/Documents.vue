@@ -9,10 +9,10 @@
       </div>
       <div id="doc-tree">
         <ul>
-          <li v-for="(dv, di) in dirList" :key="di">
-            <span @click="dirClick(di)" :class="{'dir-type-active': actDir===di, 'dir-type': actDir!==di}">{{dv}}</span>
+          <li v-for="(dv, di) in Object.values(docMap)" :key="di">
+            <span @click="dirClick(di)" :class="{'dir-type-active': actDir===di, 'dir-type': actDir!==di}">{{dv.cate}}</span>
             <ul v-show="actDir===di">
-              <li v-for="(fv, fi) in fileList[di]" :key="fi" @click="fileClick(di, fi)"
+              <li v-for="(fv, fi) in Object.values(dv.list)" :key="fi" @click="fileClick(di, fi, fv)"
               class="doc-type">{{fv}}</li>
             </ul>
           </li>
@@ -25,7 +25,7 @@
         <a href="https://cfunworld.taobao.com/category.htm?spm=a1z10.5-c.w4010-6544316521.2.5832602fxUYF1K&search=y" target="_blank"><div id="shopcar"></div></a>  
       </div>
       <div id="main-content">
-        <div v-if="!searchSta" v-html="curContent" ref="ifr"></div>
+        <iframe ref="ifr" class="main-iframe" v-if="!searchSta" :src="docSrc" frameborder="0"></iframe>
         <div v-else-if="searchSta===1">
           <p id="res-p"><span>查询结果</span><span>与关键词匹配的主题有:</span></p>
           <ul id="res-ul">
@@ -34,7 +34,6 @@
           </ul>
         </div>
         <div v-else id="notfound"></div>
-        <!-- <iframe :src="curSrc" frameborder="0" ref="ifr" width="100%"   scrolling="auto"></iframe> -->
       </div>
     </div>
     <div @click="toTop" id='to-top'></div>    
@@ -45,78 +44,53 @@
   export default {
     data () {
       return {
-        dirList: [], fileList: [],
-        actDir: -1,
-        curContent: "",
-        breadNav: "",
-        keyword: "",
-        searchList: [],
-        searchSta: 0
+        actDir: -1,  breadNav: "", 
+        keyword: "", searchList: [], searchSta: 0, docMap, indexDocSrc, docSrc:"",
+        docUrl: "https://dict.cfunworld.com/doc/",
       };
     },
     computed: {
     },
     methods: {
+      /* 点击面包屑首页 */
       toHome () {
         this.breadNav = ''
         this.actDir = -1
-        this.reqHome()
+        this.docSrc = this.indexDocSrc
         this.searchSta = 0
       },
+      /* 展开/折叠大分类 */
       dirClick (di) {
         if (this.actDir===di) {
           this.actDir = -1
         } else this.actDir = di
       },
-      fileClick (di, fi) {
-        this.reqDoc(di, fi) 
+      /* 请求文档 */
+      fileClick (di, fi, fv) {
+        let fileUrl = `${di}_${this.docMap[di].cate}/${to2Num(fi)}_${fv}/${fv}.html`
+        this.docSrc = this.docUrl + fileUrl
+        this.breadNav = `\\${this.docMap[di].cate} \\${fv}`
         this.searchSta = 0
       },
+      /* 点击搜索列表，请求文档 */
       searchLiClick (v) {
-        this.curContent = ""
-        this.reqDoc(v[0], v[1])
+        let di = v[0], fi = v[1], fv = v[2]
+        let fileUrl = `${di}_${this.docMap[di].cate}/${to2Num(fi)}_${fv}/${fv}.html`
+        this.docSrc = this.docUrl + fileUrl
+        this.breadNav = `\\${this.docMap[di].cate} \\${fv}`
         this.searchSta = 0
       },
-      reqDocList () {
-        fetch("/api/doc/getDocList")
-        .then(res => res.json()
-        .then(data => {
-          this.dirList = data.dirList
-          this.fileList = data.fileList
-        }))
-      },
-      reqDoc (di, fi) {
-        fetch(`/api/doc/getDoc?di=${di}&&fi=${fi}`)
-        .then(res => res.text()
-        .then(data => {
-          this.curContent = data
-          this.breadNav = `\\${this.dirList[di]} \\${this.fileList[di][fi]}`
-        }))
-      },
-      reqHome () {
-        fetch('/api/doc/getHome')
-        .then(res => res.text()
-        .then(data => {
-          this.curContent = data
-        }))
-      },
-      toTop () {
-        document.body.scrollTo({top: 0, behavior: 'smooth'})
-        // this.$refs.ifr[0].scrollTop = 0
-      },
+      /* 关键词搜索 */
       keySearch () {
         this.searchList = []
-        let self = this
         document.onkeydown = ev => {
           if (ev.key === "Enter") {
             if (this.keyword) {
               this.breadNav = "\\搜索"
               let reg = new RegExp(this.keyword, "i")
-              this.fileList.forEach((d, di) => {
-                d.forEach((f, fi) => {
-                  if (reg.test(f)) {
-                    this.searchList.push([di, fi, f])
-                  }
+              Object.values(this.docMap).forEach((d, di) => {
+                Object.values(d.list).forEach((f, fi) => {
+                  if (reg.test(f)) this.searchList.push([di, fi, f])
                 })
               })
               if (this.searchList.length) this.searchSta = 1
@@ -126,15 +100,21 @@
             console.log(this.searchList.length)
           }
         }
-
-      }            
+      },
+      /* 回到文档顶部 */
+      toTop () {
+        this.$refs.ifr.contentWindow.postMessage("scrollTop", 'https://dict.cfunworld.com')
+      },
     },
     created() {
-      this.reqDocList()
+      this.docSrc = this.indexDocSrc
     },
-    mounted() {
-      this.reqHome()
-    }
+  }
+  
+  /* 两位数 */
+  function to2Num (n) {
+    if (n<=9) return "0"+n
+    else return n
   }
 </script>
 
