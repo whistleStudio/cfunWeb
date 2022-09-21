@@ -224,3 +224,7 @@ input::placeholder {
   height: 350px;
   background: url("~img/documents/notfound700x350.png") center/contain no-repeat;
 }
+.last-edit {
+  color: gray;
+  float: right;
+}

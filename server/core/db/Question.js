@@ -3,9 +3,11 @@ const mongoose = require('mongoose')
 const questionSchema = new mongoose.Schema({
   cate: Number,
   keyword: String,
-  qid: Number,
+  qid: String,
   title: String,
-  regDate: {type: Date, default: new Date()},
+  regDate: {type: Date},
+  lastEdit: {type: Date},
+  hot: {type: Number, default: 0}
 })
 const Qusetion = mongoose.model('questions', questionSchema)
 

@@ -5,9 +5,10 @@ const PORT = 27017
 const questionSchema = new mongoose.Schema({
   cate: Number,
   keyword: String,
-  qid: Number,
+  qid: String,
   title: String,
-  regDate: {type: Date, default: new Date()},
+  regDate: {type: Date},
+  lastEdit: {type: Date}
 })
 const Qusetion = mongoose.model('questions', questionSchema)
 
@@ -16,11 +17,14 @@ main().catch(err => console.log(err));
 async function main() {
   await mongoose.connect(`mongodb://wsh:19930304wsh@localhost:${PORT}/${DbName}`);
   console.log(`db:${DbName} connected on port:${PORT}`)
+  let d = new Date()
   var newDoc = new Qusetion({
     cate: 2,
-    title: "路口转弯后 程序异常 好像有跳程序的现象",
-    keyword: "不执行 路线随机",
-    qid: 22020112504,
+    title: "小车冲出起始区后跑偏",
+    keyword: "启动异常",
+    qid: "022020112504",
+    regDate: d,
+    lastEdit: d
   })
   await newDoc.save()
   console.log("new Doc insert OK")

@@ -8,20 +8,18 @@
         <ul>
           <li v-for="(v, i) in qs" :key="i" @click="menuLiClick(i)"
           :class="{menuLiAct: actCate===i}"
-          class="lhplbs">{{v.cate}}</li>
+          class="lhplbs">{{v}}</li>
         </ul>
       </div>
       <div id="main">
         <div id="nav">
           <div id="bread">
-            <span v-if="pageMode<=1 || pageMode==3">{{qs[actCate].cate}}</span> 
+            <span v-if="pageMode<=1 || pageMode==3">{{qs[actCate]}}</span> 
             <span v-else>"{{breadKeyword}}"搜索结果为:</span>
             <div id="navigator">
               <ul v-if="pageMode==0">
                 <button @click="changePage(-1)" id="liPre" :disabled="actPage===0" class="pageNum">&lt;</button>
-                <li v-for="(v, i) in Array(pageCount)" :key="i" @click="actPage=i" 
-                :class="{pageNumAct: actPage===i}"
-                class="pageNum">{{i+1}}</li>
+                <li v-for="(v, i) in Array(pageCount)" :key="i" @click="actPage=i" :class="{pageNumAct: actPage===i}" class="pageNum">{{i+1}}</li>
                 <button @click="changePage(1)" id="liNxt" :disabled="actPage===pageCount-1||pageCount===0" class="pageNum">&gt;</button>
                 <li id="liTo">到 <input type="text" @focus="inputPageFocus" :value="actPage+1" ref="toP"> 页<span @click="enterPage">确认</span></li>
               </ul>
@@ -40,7 +38,7 @@
           <div v-if="pageMode==0">
             <ul class="qList" v-if="showQs.length">
               <li v-for="(v, i) in showQs" :key="i" @click="qListLiClick(v)" class="showQ">
-                <span>- {{v.title}}</span>
+                <span>- {{v.title.replace(/_/g, "，")}}</span>
                 <div v-if="v.keyword">
                   <span class="keywordTag" v-for="(kv, ki) in v.keyword.split(' ')" :key="ki">{{kv}}</span>
                 </div>     
@@ -48,10 +46,9 @@
             </ul>
           </div>
           <!-- 类别/搜索列表选择项目 -->
-          <div id="answer" v-else-if="(pageMode==1 || pageMode==3)&&curAnswer.name">
-            <iframe :src="`questions/${curAnswer.dir}/${curAnswer.name}/${curAnswer.name}.html`" frameborder="0" ref="ifr"
-            width="100%"  height="100%" scrolling="none"
-            ></iframe>
+          <div id="answer" v-else-if="(pageMode==1 || pageMode==3)">
+            <iframe :src="queSrc" frameborder="0" ref="ifr" width="100%"  height="100%" scrolling="none"></iframe>
+            <div v-if="lastEdit" class="last-edit">&lt;Last Edit {{lastEdit}}&gt;</div>
           </div>
           <!-- 搜索列表展示 -->
           <div id="searchResults" v-else-if="pageMode==2">
@@ -79,17 +76,10 @@ import {qs} from "./qs.json"
 export default {
   data () {
     return {
-      qs,
-      actCate: 0,
-      actPage: 0,
-      curQs: [],
-      pageMode: 0, //0-列表展示, 1-列表解答, 2-搜索展示, 3-搜索解答, 4没找到
-      curAnswer: {
-        dir: "",
-        name: ""
-      },
-      keyword: "",
-      searchList: []
+      actCate: 0, actPage: 0, pageMode: 0, //0-列表展示, 1-列表解答, 2-搜索展示, 3-搜索解答, 4没找到
+      keyword: "", queSrc: "", queUrl: "https://dict.cfunworld.com/que/", lastEditDate: "",
+      curQs: [], searchList: [], 
+      qs
     }
   },
   computed: {
@@ -103,6 +93,14 @@ export default {
     },
     breadKeyword: function () {
       return this.keyword.length<5 ? this.keyword : this.keyword.substring(0,5)+"..." 
+    },
+    lastEdit () {
+      let d = this.lastEditDate
+      if (d instanceof Date) {
+        let m = d.getMonth()+1>9 ? d.getMonth()+1 : "0"+(d.getMonth()+1)
+        let dat = d.getDate()>9 ? d.getDate() : "0"+d.getDate()
+        return `${d.getFullYear()}-${m}-${dat}`
+      } else return ""
     }
   },
   methods: {
@@ -116,9 +114,11 @@ export default {
       if (this.pageMode === 0)
         this.pageMode = 1
       else this.pageMode = 3
-      this.curAnswer.dir = qs[v.cate].cate
-      this.curAnswer.name = v.title
-      // console.log(this.curAnswer.dir, this.curAnswer.name)
+      this.actCate = v.cate
+      this.lastEditDate = new Date(v.lastEdit)
+      // console.log(v.lastEdit, typeof this.lastEditDate)
+      let tempQueUrl = `${v.cate}_${this.qs[v.cate]}/${v.title}/${v.title}.html`
+      this.queSrc = this.queUrl + tempQueUrl
     },
     /* 具体答案页返回上级列表展示页或搜索页 */
     backPage () {
@@ -141,6 +141,7 @@ export default {
         if (ev.key === "Enter") {
           this.enterPage()
         }
+        this.$refs.toP.blur() 
       }
     },
     enterPage () {
@@ -152,7 +153,6 @@ export default {
         this.actPage = 0
         this.$refs.toP.value = 1
       }
-      this.$refs.toP.blur()      
     },
     /* 某类列表请求 */
     reqQueList (i) {
@@ -198,15 +198,18 @@ export default {
   },
   created () {
     let p = this.$route.params
-    if (p) {
+    console.log(p)
+    if (p.actCate!==undefined) {
       ;(async ()=> {
         try {
           await this.reqQueList(p.actCate)
           if (p.pageMode===1) {
+            let {actCate, qTitle} = p
             this.pageMode = 1
-            this.actCate = p.actCate
-            this.curAnswer.dir = qs[p.actCate].cate
-            this.curAnswer.name = p.answerName            
+            this.actCate = actCate
+            let tempQueUrl = `${actCate}_${this.qs[actCate]}/${qTitle}/${qTitle}.html`
+            this.queSrc = this.queUrl + tempQueUrl
+
           } else if (p.pageMode>1) {
             this.pageMode = p.pageMode
             this.searchList = p.searchList
