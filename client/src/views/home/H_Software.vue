@@ -31,7 +31,7 @@
 #HSoftware {
  width: 100%;
  height: 100vh;
- background: url("https://s1.ax1x.com/2022/04/28/LOKw0U.jpg") center/cover no-repeat;
+ background: url("https://dict.cfunworld.com/img/cfweb/softwareBg.jpg") center/cover no-repeat;
  display: flex;
  justify-content: center;
  align-items: center;
@@ -45,7 +45,7 @@
   float: left;
   width: 60%;
   height: 100%;
-  background: url("https://s1.ax1x.com/2022/04/28/LOKdmT.gif") center/contain no-repeat;
+  background: url("https://dict.cfunworld.com/img/cfweb/softwareC.png") center/contain no-repeat;
 }
 #resume {
   float: right;

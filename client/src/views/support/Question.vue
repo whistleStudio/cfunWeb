@@ -22,7 +22,7 @@
             @click="toPage({pageMode:1, actCate, qTitle:v.title})"
             >· {{v.title}}</li>
           </ul>
-          <div @mouseenter="wantMore=1" @mouseleave="wantMore=0" @click="toPage({pageMode:0, actCate})">
+          <div @mouseenter="wantMore=1" @mouseleave="wantMore=0" @click="toPage({pageMode:0, actCate:0})">
             <span :class="{spanBlue: wantMore}">查看更多</span>
             <div><div id="line" :class="{toBlue: wantMore}"></div></div>
           </div>

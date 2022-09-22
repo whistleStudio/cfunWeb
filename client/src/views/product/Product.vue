@@ -1,11 +1,11 @@
 <!-- product -->
 <template>
   <div>
-    <div :style="{backgroundImage: `url(${require('img/product/'+imgInfo[actId].v+'0.jpg')})`}" 
+    <div :style="{backgroundImage: `url(${imgUrl+imgInfo[actId].v+'0.jpg'})`}" 
     class="topBanner"></div>
     <div class="content">
       <img v-for="(v, i) in Array(imgInfo[actId].lastIdx)" :key="i" 
-      :src="require('img/product/'+imgInfo[actId].v+(i+1)+'.jpg')" alt="">
+      :src="imgUrl+imgInfo[actId].v+(i+1)+'.jpg'" alt="">
     </div>    
   </div>
 </template>
@@ -14,6 +14,7 @@
   export default {
     data () {
       return {
+        imgUrl: "https://dict.cfunworld.com/img/cfweb/product/",
         imgInfo: [
           {id:0, v:"sfw", lastIdx:2},
           {id:1, v:"np", lastIdx:3},

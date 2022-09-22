@@ -8,7 +8,8 @@ const questionSchema = new mongoose.Schema({
   qid: String,
   title: String,
   regDate: {type: Date},
-  lastEdit: {type: Date}
+  lastEdit: {type: Date},
+  hot: {type: Number, default: 0}
 })
 const Qusetion = mongoose.model('questions', questionSchema)
 

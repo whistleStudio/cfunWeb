@@ -17,11 +17,11 @@
           {
             id: 1, val: {id: 0, title: "产品", eng: "/product"},
             clist: [
-              {ctitle: "教学软件", img: "https://s1.ax1x.com/2022/04/28/LO1vMn.png", path: "/product/software"},
-              {ctitle: "非编程系列", img: "https://s1.ax1x.com/2022/04/28/LO1Xxs.png", path: "/product/nonprogram"},
-              {ctitle: "编程系列", img: "https://s1.ax1x.com/2022/04/28/LO1O2j.png", path: "/product/program"},
-              {ctitle: "创意制作系列", img: "https://s1.ax1x.com/2022/04/28/LO1LGQ.png", path: "/product/creative"},
-              {ctitle: "机器人系列", img: "https://s1.ax1x.com/2022/04/28/LOMBKP.png", path: "/product/robot"},
+              {ctitle: "教学软件", img: "https://dict.cfunworld.com/img/cfweb/product/cl0.png", path: "/product/software"},
+              {ctitle: "非编程系列", img: "https://dict.cfunworld.com/img/cfweb/product/cl1.png", path: "/product/nonprogram"},
+              {ctitle: "编程系列", img: "https://dict.cfunworld.com/img/cfweb/product/cl2.png", path: "/product/program"},
+              {ctitle: "创意制作系列", img: "https://dict.cfunworld.com/img/cfweb/product/cl3.png", path: "/product/creative"},
+              {ctitle: "机器人系列", img: "https://dict.cfunworld.com/img/cfweb/product/cl4.png", path: "/product/robot"},
               {ctitle: "其他", img: "cl1.png", path: "/product/other"}
             ]
             // clist: [

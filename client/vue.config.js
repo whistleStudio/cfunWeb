@@ -42,7 +42,7 @@ module.exports = {
   devServer: {
     proxy: {
       "/api": {
-        target: "http://127.0.0.1:8088",
+        target: "http://127.0.0.1:8087",
         ws: true,
         changeOrigin: true,
         pathRewrite: {
@@ -50,7 +50,7 @@ module.exports = {
         }
       },
       "/*.assets": {
-        target: "http://127.0.0.1:8088",
+        target: "http://127.0.0.1:8087",
         ws: true,
         changeOrigin: true,
       }

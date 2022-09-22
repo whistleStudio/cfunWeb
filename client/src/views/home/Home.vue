@@ -18,11 +18,11 @@
     data () {
       return {
         homeInfo:[
-          {img: "https://s1.ax1x.com/2022/04/28/LOMkuV.jpg"},
-          {img: "https://s1.ax1x.com/2022/04/28/LOMZEF.jpg"},
-          {img: "https://s1.ax1x.com/2022/04/28/LOMij0.jpg"},
-          {img: "https://s1.ax1x.com/2022/04/28/LOMABT.jpg"},
-          {img: "https://s1.ax1x.com/2022/04/28/LOMEHU.jpg"},
+          {img: "https://dict.cfunworld.com/img/cfweb/hardware.jpg"},
+          {img: "https://dict.cfunworld.com/img/cfweb/creative.jpg"},
+          {img: "https://dict.cfunworld.com/img/cfweb/robot.jpg"},
+          {img: "https://dict.cfunworld.com/img/cfweb/course.jpg"},
+          {img: "https://dict.cfunworld.com/img/cfweb/activity.jpg"},
         ],        
         // homeInfo:[
         //   {img: "hardware.jpg"},

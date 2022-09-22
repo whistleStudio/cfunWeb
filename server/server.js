@@ -1,6 +1,6 @@
 const express = require("express")
 const app = express()
-const PORT = 8088
+const PORT = 8087
 const staticPath = __dirname
 let path = require('path')
 require("./core/db/connect")
