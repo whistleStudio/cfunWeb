@@ -1,6 +1,6 @@
 <!-- documents -->
 <template>
-  <div id="documents">
+  <div id="documents" v-if="docSrc">
     <div id="directory">
       <div id="search">
         <img :src="require('img/cflogo2.png')" alt="创趣天地" @click="$router.push('/')">
@@ -9,10 +9,10 @@
       </div>
       <div id="doc-tree">
         <ul>
-          <li v-for="(dv, di) in Object.values(docMap)" :key="di">
-            <span @click="dirClick(di)" :class="{'dir-type-active': actDir===di, 'dir-type': actDir!==di}">{{dv.cate}}</span>
+          <li v-for="(dv, di) in docMap" :key="di">
+            <span @click="dirClick(di)" :class="{'dir-type-active': actDir===di, 'dir-type': actDir!==di}">{{dv.name}}</span>
             <ul v-show="actDir===di">
-              <li v-for="(fv, fi) in Object.values(dv.list)" :key="fi" @click="fileClick(di, fi, fv)"
+              <li v-for="(fv, fi) in dv.item" :key="fi" @click="fileClick(di, fi, fv)"
               class="doc-type">{{fv}}</li>
             </ul>
           </li>
@@ -30,7 +30,7 @@
           <p id="res-p"><span>查询结果</span><span>与关键词匹配的主题有:</span></p>
           <ul id="res-ul">
             <li v-for="(v, i) in searchList" :key="i" 
-            @click="searchLiClick(v)" class="res-li">{{v[2]}}</li>
+            @click="searchLiClick(v)" class="res-li">{{v.title}}</li>
           </ul>
         </div>
         <div v-else id="notfound"></div>
@@ -45,11 +45,16 @@
     data () {
       return {
         actDir: -1,  breadNav: "", 
-        keyword: "", searchList: [], searchSta: 0, docMap, indexDocSrc, docSrc:"",
+        keyword: "", searchList: [], searchSta: 0, docMap:[], indexDocSrc:"", docSrc:"",
         docUrl: "https://dict.cfunworld.com/doc/",
       };
     },
     computed: {
+      isMobilePhone() {
+        const ua = navigator.userAgent.toLowerCase();
+        const t1 = /android|webos|iphone|ipod|blackberry|iemobile|opera mini/i.test(ua);
+        return t1 ;
+      }
     },
     methods: {
       /* 点击面包屑首页 */
@@ -67,17 +72,17 @@
       },
       /* 请求文档 */
       fileClick (di, fi, fv) {
-        let fileUrl = `${di}_${this.docMap[di].cate}/${to2Num(fi)}_${fv}/${fv}.html`
+        let fileUrl = `${di}_${this.docMap[di].name}/${to2Num(fi)}_${fv}/${fv}.html`
         this.docSrc = this.docUrl + fileUrl
-        this.breadNav = `\\${this.docMap[di].cate} \\${fv}`
+        this.breadNav = `\\${this.docMap[di].name} \\${fv}`
         this.searchSta = 0
       },
       /* 点击搜索列表，请求文档 */
       searchLiClick (v) {
-        let di = v[0], fi = v[1], fv = v[2]
-        let fileUrl = `${di}_${this.docMap[di].cate}/${to2Num(fi)}_${fv}/${fv}.html`
+        let di = v.cate, fi = v.item, fv = v.title
+        let fileUrl = `${di}_${this.docMap[di].name}/${to2Num(fi)}_${fv}/${fv}.html`
         this.docSrc = this.docUrl + fileUrl
-        this.breadNav = `\\${this.docMap[di].cate} \\${fv}`
+        this.breadNav = `\\${this.docMap[di].name} \\${fv}`
         this.searchSta = 0
       },
       /* 关键词搜索 */
@@ -87,17 +92,19 @@
           if (ev.key === "Enter") {
             if (this.keyword) {
               this.breadNav = "\\搜索"
-              let reg = new RegExp(this.keyword, "i")
-              Object.values(this.docMap).forEach((d, di) => {
-                Object.values(d.list).forEach((f, fi) => {
-                  if (reg.test(f)) this.searchList.push([di, fi, f])
-                })
-              })
-              if (this.searchList.length) this.searchSta = 1
-              else this.searchSta = -1
+              fetch(`/api/doc/kwSearch?kw=${this.keyword}`)
+              .then(res => res.json()
+              .then(data => {
+                if (!data.err) {
+                  this.searchList = data.searchList
+                  this.searchSta = 1
+                  console.log(this.searchList.length)
+                } else if(data.err = 1) this.searchSta = -1
+                else alert("请求数据失败")
+              }))
             }
             this.$refs.sear.blur()
-            console.log(this.searchList.length)
+            
           }
         }
       },
@@ -107,7 +114,17 @@
       },
     },
     created() {
-      this.docSrc = this.indexDocSrc
+      if (this.isMobilePhone) window.location="https://dictwx.cfunworld.com"
+      console.log(this.isMobilePhone)
+      // this.docSrc = this.indexDocSrc
+      fetch(`/api/doc/getCate?mode=1`)
+      .then(res => res.json()
+      .then(data => {
+        this.indexDocSrc = data.indexDocSrc
+        this.docSrc = data.indexDocSrc
+        console.log(data.docMap)
+        this.docMap = data.docMap
+      }))
     },
   }
   
