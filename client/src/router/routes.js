@@ -7,6 +7,7 @@ const Documents = res => require(["views/documents/Documents"],res)
 const Question = res => require(["views/support/Question"],res)
 const Contact = res => require(["views/support/Contact"],res)
 const Measures = res => require(["views/support/Measures"],res)
+const Creative = res => require(["views/creative/Creative"], res)
 
 const routes = [
   {
@@ -49,6 +50,11 @@ const routes = [
     name: "measures",
     path: "/support/measures",
     component: Measures
+  },
+  {
+    name: "creative",
+    path: "/creative",
+    component: Creative
   }
 ]
 

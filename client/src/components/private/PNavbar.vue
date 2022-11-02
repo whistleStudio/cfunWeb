@@ -35,10 +35,11 @@
           },
           {id: 2, val: {id: 0, title: "课程", eng: "/course"}},
           {id: 3, val: {id: 0, title: "赛事活动", eng: "/activity"}},
-          {id: 4, val: {id: 0, title: "技术文档", eng: "/documents"}},
-          {id: 5, val: {id: 0, title: "解决方案", eng: "/solution"}},
+          {id: 4, val: {id: 0, title: "创意工坊", eng: "/creative"}},
+          {id: 5, val: {id: 0, title: "技术文档", eng: "/documents"}},
+          {id: 6, val: {id: 0, title: "解决方案", eng: "/solution"}},
           {
-            id: 6, val: {id: 0, title: "服务支持", eng: "/help"},
+            id: 7, val: {id: 0, title: "服务支持", eng: "/help"},
             clist: [
               {ctitle: "常见问题", path: "/support/question"},
               {ctitle: "在线商城", path: "/support/mall"},

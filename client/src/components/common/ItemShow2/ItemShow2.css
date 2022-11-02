@@ -1,0 +1,126 @@
+/* 宫格长宽--pItemsLiW, --pItemsLiH，图片长宽--pItemsImgW, --pItemsImgH */
+* {
+  --mainColor: var(--rFontColor);
+  --width: 60vw;
+  --height: 58vw;
+  --pItemsLiW: 18vw;
+  --pItemsLiH: 18vw;
+  --pItemsImgW: 17vw;
+  --pItemsImgH: 12vw; 
+}
+#itemShow2 {
+  margin-top: 50px;
+  width: 100%;
+  padding-bottom: 20px;
+  /* height: 100%; */
+}
+#pItems {
+  margin: 0 auto;
+  width: var(--width);
+  height: var(--height);
+  display: flex;
+  flex-wrap: wrap;
+  /* justify-content: space-between; */
+  align-content: flex-start;
+  margin-bottom: 3rem;
+}
+#pItems>li {
+  width: var(--pItemsLiW);
+  height: var(--pItemsLiH);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  background-color: white;
+  margin-bottom: 1.5vw;
+  box-sizing: border-box;
+}
+#pItems>li:not(:nth-of-type(3n)) {
+  margin-right: calc((var(--width) - var(--pItemsLiW)*3) / 2);
+}
+.pic {
+  margin-top: 0.5vw;
+  width: var(--pItemsImgW);
+  height: var(--pItemsImgH);
+  background: white center/contain no-repeat;
+}
+.picHover {
+  animation: bigger 0.5s forwards;
+}
+.resume {
+  width: var(--pItemsImgW);
+  overflow: hidden;
+  /* height: var(--pItemsLiH); */
+  /* color: white; */
+  /* background-color: var(--rFontColorA); */
+}
+.resume>h3 {
+  height: 2vw;
+  font: normal 1.1rem/2vw "Microsoft YaHei";
+}
+.resume>div {
+  height: 2vw;
+  font-size: 0.8rem;
+  /* background-color: orange; */
+}
+.resume>span {
+  display: inline-block;
+  height: 1vw;
+  color: gray;
+  /* background-color: olive; */
+}
+.spanHover {
+  animation: changeColor 0.5s forwards;
+}
+#pNavBtn>ul{
+  display: flex;
+  justify-content: center;
+}
+#pNavBtn li {
+  margin-left: 0.2rem;
+  margin-right: 0.2rem;
+  width: 2rem;
+  height: 2rem;
+  box-sizing: border-box;
+  border: 1px solid gainsboro;
+  border-radius: 3px;
+  font: 1.2rem/2rem "Microsoft YaHei";
+  text-align: center;
+  cursor: pointer;
+  color: gray;
+}
+.btnActive {
+  color: white !important;
+  background-color: var(--mainColor);
+}
+#pNavBtn li:hover {
+  color: var(--mainColor);
+  /* font-weight: bold; */
+}
+#pItems>li:hover {
+  animation: highligh 0.5s forwards;
+}
+
+@keyframes highligh {
+  0% {box-shadow: none; }
+  100% {box-shadow: 1px 1px 1px 2px gainsboro; }
+}
+@keyframes bigger {
+  from {
+    background-size: 100%;
+  }
+  to {
+    background-size: 120%;
+  }
+}
+@keyframes changeColor {
+  from {
+    color: black;
+  }
+  to {
+    color: var(--mainColor);
+    font-weight: bold;    
+  }
+}
