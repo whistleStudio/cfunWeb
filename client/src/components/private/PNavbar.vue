@@ -1,8 +1,7 @@
 <!--  -->
 <template>
   <div id="PNavbar" :style="PNavStyle" @mousemove="navStyleFlag=0" @mouseleave="navStyleFlag=1">
-    <nav-bar :navbarList="navbarList"  :logoStyle="logoStyle" :navCMenuBgc="PNavStyle.backgroundColor"
-    :navStyleFlag="navStyleFlag"></nav-bar>
+    <nav-bar :navbarList="navbarList"  :logoStyle="logoStyle" :navCMenuBgc="PNavStyle.backgroundColor" :navStyleFlag="navStyleFlag"></nav-bar>
   </div>
 </template>
 
@@ -23,15 +22,7 @@
               {ctitle: "创意制作系列", img: "https://dict.cfunworld.com/img/cfweb/product/cl3.png", path: "/product/creative"},
               {ctitle: "机器人系列", img: "https://dict.cfunworld.com/img/cfweb/product/cl4.png", path: "/product/robot"},
               {ctitle: "其他", img: "cl1.png", path: "/product/other"}
-            ]
-            // clist: [
-            //   {ctitle: "教学软件", img: "cl0.png", path: "/product/software"},
-            //   {ctitle: "非编程系列", img: "cl1.png", path: "/product/nonprogram"},
-            //   {ctitle: "编程系列", img: "cl2.png", path: "/product/program"},
-            //   {ctitle: "创意制作系列", img: "cl3.png", path: "/product/creative"},
-            //   {ctitle: "机器人系列", img: "cl4.png", path: "/product/robot"},
-            //   {ctitle: "其他", img: "cl1.png", path: "/product/other"}
-            // ]            
+            ]           
           },
           {id: 2, val: {id: 0, title: "课程", eng: "/course"}},
           {id: 3, val: {id: 0, title: "赛事活动", eng: "/activity"}},

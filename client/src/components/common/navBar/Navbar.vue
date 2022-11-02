@@ -2,7 +2,7 @@
 <template>
   <div id="navbar" @mouseleave="actTitleId=-1">
     <div>
-      <div id="logo" :style="logoStyle">
+      <div id="logo" :style="logoStyle" @click="toHome">
       </div>
       <div id="nav">
         <ul id="navMenu">
@@ -51,8 +51,11 @@ export default {
     // }
   },
   methods: {
+    toHome () {
+      this.$router.push("/home")
+    },
     toPage1 (path, k) {
-      if (!(k===1 || k===6)) this.$router.push(path)
+      if (!(k===1 || k===7)) this.$router.push(path)
     },
     toPage2 (path, k) {
       if (k===1) window.open("https://cfunworld.taobao.com/category.htm?spm=a1z10.5-c.w4010-6544316521.2.5832602fxUYF1K&search=y")
@@ -94,6 +97,7 @@ export default {
     height: 55px;
     float: left;
     background: center/contain no-repeat;
+    cursor: pointer;
   }
   #nav {
     float: right;
