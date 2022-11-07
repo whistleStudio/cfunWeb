@@ -4,13 +4,15 @@
     <div :style="{backgroundImage: `url(${imgUrl+imgInfo[actId].v+'0.jpg'})`}" 
     class="topBanner"></div>
     <div class="content">
-      <img v-for="(v, i) in Array(imgInfo[actId].lastIdx)" :key="i" 
+      <p-software v-if="actId===0"></p-software>
+      <img v-else v-for="(v, i) in Array(imgInfo[actId].lastIdx)" :key="i" 
       :src="imgUrl+imgInfo[actId].v+(i+1)+'.jpg'" alt="">
     </div>    
   </div>
 </template>
 
 <script>
+  import PSoftware from "./child/PSoftware.vue"
   export default {
     data () {
       return {
@@ -25,7 +27,9 @@
         ],
       };
     },
-    components: {},
+    components: {
+      "p-software": PSoftware
+    },
     computed: {
       actId: function () {
         return this.$route.query.id
