@@ -55,5 +55,12 @@ module.exports = {
         changeOrigin: true,
       }
     }
-  }    
+  },
+  css: {
+    loaderOptions: {
+     scss: {
+      additionalData: `@import "assets/css/variables.scss";`,
+     },
+    },
+  }   
 }

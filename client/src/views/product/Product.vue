@@ -5,6 +5,7 @@
     class="topBanner"></div>
     <div class="content">
       <p-software v-if="actId===0"></p-software>
+      <p-non-program v-else-if="actId===1" />
       <img v-else v-for="(v, i) in Array(imgInfo[actId].lastIdx)" :key="i" 
       :src="imgUrl+imgInfo[actId].v+(i+1)+'.jpg'" alt="">
     </div>    
@@ -13,6 +14,7 @@
 
 <script>
   import PSoftware from "./child/PSoftware.vue"
+  import PNonProgram from "./child/PNonProgram.vue";
   export default {
     data () {
       return {
@@ -28,13 +30,17 @@
       };
     },
     components: {
-      "p-software": PSoftware
+      "p-software": PSoftware,
+      "p-non-program": PNonProgram
     },
     computed: {
       actId: function () {
         return this.$route.query.id
       }
     },
+    created () {
+      console.log(this.actId)
+    }
 
   }
 </script>
