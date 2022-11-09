@@ -16,12 +16,12 @@
           {
             id: 1, val: {id: 0, title: "产品", eng: "/product"},
             clist: [
-              {ctitle: "教学软件", img: "https://dict.cfunworld.com/img/cfweb/product/cl0.png", path: "/product/software"},
-              {ctitle: "非编程系列", img: "https://dict.cfunworld.com/img/cfweb/product/cl1.png", path: "/product/nonprogram"},
-              {ctitle: "编程系列", img: "https://dict.cfunworld.com/img/cfweb/product/cl2.png", path: "/product/program"},
-              {ctitle: "创意制作系列", img: "https://dict.cfunworld.com/img/cfweb/product/cl3.png", path: "/product/creative"},
-              {ctitle: "机器人系列", img: "https://dict.cfunworld.com/img/cfweb/product/cl4.png", path: "/product/robot"},
-              {ctitle: "其他", img: "cl1.png", path: "/product/other"}
+              {ctitle: "教学软件", img: "https://dict.cfunworld.com/img/cfweb/product/cl0.png", path: "/product"},
+              {ctitle: "非编程系列", img: "https://dict.cfunworld.com/img/cfweb/product/cl1.png", path: "/product"},
+              {ctitle: "编程系列", img: "https://dict.cfunworld.com/img/cfweb/product/cl2.png", path: "/product"},
+              {ctitle: "机器人系列", img: "https://dict.cfunworld.com/img/cfweb/product/cl4.png", path: "/product"},
+              {ctitle: "创意制作系列", img: "https://dict.cfunworld.com/img/cfweb/product/cl3.png", path: "/product"},
+              {ctitle: "创客空间", img: "https://dict.cfunworld.com/img/cfweb/product/cl5.png", path: "/solution"}
             ]           
           },
           {id: 2, val: {id: 0, title: "课程", eng: "/course"}},

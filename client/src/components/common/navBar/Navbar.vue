@@ -12,9 +12,8 @@
             <div id="navCMenu1" v-if="actTitleId===item.id && item.clist && item.id===1"
             @mouseleave="actTitleId=-1">
               <ul  class="hor">
-                <li v-for="(c, i) in item.clist" :key="i" @click="toProduct(i)">
+                <li v-for="(c, i) in item.clist" :key="i" @click="toProduct(c.path, i)">
                   <span>{{c.ctitle}}</span>
-                  <!-- <div :style="{backgroundImage: `url(${require('img/'+c.img)})`}"></div> -->
                   <div :style="{backgroundImage: `url(${c.img})`}"></div>
                 </li>
               </ul>
@@ -61,8 +60,8 @@ export default {
       if (k===1) window.open("https://cfunworld.taobao.com/category.htm?spm=a1z10.5-c.w4010-6544316521.2.5832602fxUYF1K&search=y")
       else this.$router.push(path)
     },
-    toProduct (id) {
-      this.$router.push({path:"/product", query:{id}})
+    toProduct (path, id) {
+      this.$router.push({path, query:{id}})
     },
     titleMouseLeave (item) {
       if (!item.clist) {

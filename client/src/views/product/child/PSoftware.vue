@@ -116,12 +116,13 @@
     >li {
       margin-bottom: 100px;
       .intro-title {
-        font: bold 35px/50px $fontF;
+        font: bold 50px/100px $fontF;
         color: $gray100;
       }
       .intro-sum {
-        font: 19px/60px $fontF;
+        font: 22px/60px $fontF;
         color: $gray100;
+        margin-bottom: 30px;
       }
       img {
         width: 1200px;
