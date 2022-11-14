@@ -2,13 +2,13 @@
 <template>
   <div>
     <div :style="{backgroundImage: `url(${imgUrl+imgInfo[actId].v+'0.jpg'})`}" 
-    class="topBanner"></div>
+    class="topBanner">{{actId}}</div>
     <div class="content">
       <p-software v-if="actId===0"></p-software>
       <p-non-program v-else-if="actId===1" />
       <p-program v-else-if="actId===2" />
       <p-robot v-else-if="actId===3" />
-      <img v-else v-for="(v, i) in Array(imgInfo[actId].lastIdx)" :key="i" 
+      <img v-else-if="actId===4" v-for="(v, i) in Array(imgInfo[actId].lastIdx)" :key="i" 
       :src="imgUrl+imgInfo[actId].v+(i+1)+'.jpg'" alt="">
     </div>    
   </div>
@@ -30,7 +30,7 @@
           {id:2, v:"p", lastIdx:5},
           {id:3, v:"rb", lastIdx:3},
           {id:4, v:"c", lastIdx:1},
-          {id:5, v:"sfw", lastIdx:2},
+          // {id:5, v:"sfw", lastIdx:2},
         ],
       };
     },
@@ -42,13 +42,9 @@
     },
     computed: {
       actId: function () {
-        return this.$route.query.id
+        return parseInt(this.$route.query.id)
       }
-    },
-    created () {
-      console.log(this.actId)
     }
-
   }
 </script>
 

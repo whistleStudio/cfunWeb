@@ -44,6 +44,7 @@
       }
     },
     components: {},
+    created () {console.log("ps")}
   }
 </script>
 
