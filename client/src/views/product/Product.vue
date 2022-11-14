@@ -2,7 +2,7 @@
 <template>
   <div>
     <div :style="{backgroundImage: `url(${imgUrl+imgInfo[actId].v+'0.jpg'})`}" 
-    class="topBanner">{{actId}}</div>
+    class="topBanner"></div>
     <div class="content">
       <p-software v-if="actId===0"></p-software>
       <p-non-program v-else-if="actId===1" />
