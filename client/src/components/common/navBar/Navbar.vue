@@ -20,7 +20,7 @@
             </div>
             <div v-else-if="actTitleId===item.id && item.clist" id="navCMenu2">
               <ul class="ver">
-                <li v-for="(c, i) in item.clist" :key="i" @click="toPage2(c.path, i)">{{c.ctitle}}</li>
+                <li v-for="(c, i) in item.clist" :key="i" @click="toPage2(c.path, i)"> <span>{{c.ctitle}}</span></li>
               </ul>
             </div>
           </li>
@@ -107,9 +107,10 @@ export default {
     display: flex;
   }
   #navMenu>li {
+    min-width: 90px;
     font: bold 1.3rem/55px "Microsoft YaHei";
     text-align: center;
-    margin-left: 60px;
+    margin-left: 4rem;
     cursor: pointer;
   }
   #navCMenu1 {
@@ -117,6 +118,7 @@ export default {
     left: 0;
     top: 75px;
     width: 100vw;
+    min-width: 1000px;
     height: 250px;
     background-color: white;
     box-sizing: border-box;
@@ -158,8 +160,16 @@ export default {
     color: rgb(150, 150, 150);
   }
   .ver>li {
+    display: flex;
+    align-items: center;
     box-sizing: border-box;
+    min-height: 30px;
     border-top: 1px solid var(--rFontColorAA);
+  }
+  .ver>li>span {
+    display: block;
+    width: 100%;
+    text-align: center;
   }
 
   .titleHover {

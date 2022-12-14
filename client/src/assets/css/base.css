@@ -10,6 +10,9 @@ a {
 html {
   overflow-y: overlay;
 }
+body {
+  overflow-y: hidden;
+}
 ul {
   list-style: none;
 }

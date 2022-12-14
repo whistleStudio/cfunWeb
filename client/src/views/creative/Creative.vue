@@ -73,6 +73,8 @@ export default {
 <style scoped>
 .creative {
   background-color: rgb(250,250,250);
+  min-width: 1000px;
+  height: 100%;
   /* padding-bottom: 2rem; */
   /* display: flex; */
   /* flex-direction: column; */
@@ -87,6 +89,8 @@ export default {
 }
 .detail {
   width: calc(100vw);
+  min-width: 1000px;
+  /* min-width: 1000px; */
   height: calc(100vh - 155px);
   margin: 0 auto;
 }

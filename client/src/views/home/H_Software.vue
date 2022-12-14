@@ -30,6 +30,7 @@
 <style scoped>
 #HSoftware {
  width: 100%;
+ min-width: 1000px;
  height: 100vh;
  background: url("https://dict.cfunworld.com/img/cfweb/softwareBg.jpg") center/cover no-repeat;
  display: flex;

@@ -6,18 +6,27 @@
   --pItemsLiW: 18vw;
   --pItemsLiH: 18vw;
   --pItemsImgW: 17vw;
-  --pItemsImgH: 12vw; 
+  --pItemsImgH: 12vw;
+  --minW: 600px;
+  --minH: 580px; 
+  --minPItemLi: 180px;
+  --minPItemImgW: 170px;
+  --minPItemsImgH: 120PX;
 }
 #itemShow2 {
   margin-top: 50px;
   width: 100%;
+  min-width: 1000px;
+  /* background-color: olive; */
   padding-bottom: 20px;
   /* height: 100%; */
 }
 #pItems {
   margin: 0 auto;
   width: var(--width);
+  min-width: var(--minW);
   height: var(--height);
+  min-height: var(--minH);
   display: flex;
   flex-wrap: wrap;
   /* justify-content: space-between; */
@@ -26,7 +35,9 @@
 }
 #pItems>li {
   width: var(--pItemsLiW);
+  min-width: var(--minPItemLi);
   height: var(--pItemsLiH);
+  min-height: var(--minPItemLi);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -43,7 +54,9 @@
 .pic {
   margin-top: 0.5vw;
   width: var(--pItemsImgW);
+  min-width: var(--minPItemImgW);
   height: var(--pItemsImgH);
+  min-height: var(--minPItemsImgH);
   background: white center/contain no-repeat;
 }
 .picHover {
@@ -51,23 +64,30 @@
 }
 .resume {
   width: var(--pItemsImgW);
+  min-width: var(--minPItemImgW);
   overflow: hidden;
   /* height: var(--pItemsLiH); */
   /* color: white; */
   /* background-color: var(--rFontColorA); */
 }
 .resume>h3 {
+  display: flex;
+  align-items: center;
   height: 2vw;
+  min-height: 20px;
   font: normal 1.1rem/2vw "Microsoft YaHei";
 }
 .resume>div {
   height: 2vw;
+  min-height: 20px;
   font-size: 0.8rem;
+  overflow: hidden;
   /* background-color: orange; */
 }
 .resume>span {
   display: inline-block;
   height: 1vw;
+  min-height: 10px;
   color: gray;
   /* background-color: olive; */
 }
@@ -79,10 +99,15 @@
   justify-content: center;
 }
 #pNavBtn li {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin-left: 0.2rem;
   margin-right: 0.2rem;
   width: 2rem;
+  min-width: 20px;
   height: 2rem;
+  min-height: 20px;
   box-sizing: border-box;
   border: 1px solid gainsboro;
   border-radius: 3px;

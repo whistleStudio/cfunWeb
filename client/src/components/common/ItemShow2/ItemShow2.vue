@@ -6,7 +6,7 @@
       @mouseover="triggerHover(i)"  @mouseout="removeHover(i)" @click="getInfo(v.sub, v.link)">
         <div class="pic" :style="{backgroundImage: `url(${v.img})`}"></div>
         <div class="resume">
-          <h3>{{v.sub}}</h3>
+          <h3><span>{{v.sub}}</span></h3>
           <div>{{v.des}}</div>
           <span>了解更多</span>
         </div>
@@ -14,11 +14,10 @@
     </ul>
     <div id="pNavBtn">
       <ul>
-        <li @click="changePage(-1)">&lt;</li>
+        <li @click="changePage(-1)"><span>&lt;</span></li>
         <li v-for="(v, i) in Array(curPages)" :key="i"
-        @click="selectPage(i)" :class="{btnActive: curSelectPage == i}">
-        {{i+1}}</li>
-        <li @click="changePage(1)">&gt;</li>
+        @click="selectPage(i)" :class="{btnActive: curSelectPage == i}"><span>{{i+1}}</span></li>
+        <li @click="changePage(1)"><span>&gt;</span></li>
       </ul> 
     </div>
   </div>  

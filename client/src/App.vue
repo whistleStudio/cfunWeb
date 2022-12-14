@@ -28,12 +28,15 @@ export default {
     "p-footbar": PFootbar
   },
   created () {
-    if (this.isMobilePhone) window.location="https://dictwx.cfunworld.com"
+    // if (this.isMobilePhone) window.location="https://dictwx.cfunworld.com"
   }
 }
 </script>
 
 
-<style lang="scss">
+<style>
   @import "assets/css/base.css";
+  #app {
+    min-width: 1000px;
+  }
 </style>

@@ -3,9 +3,7 @@
   <div id="home">
     <h-software />
     <ul>
-      <li v-for="(v, i) in homeInfo" :key="i" 
-      v-lazy:background-image="v.img"
-      class="homeContent"></li>
+      <li v-for="(v, i) in homeInfo" :key="i" v-lazy:background-image="v.img" class="homeContent"></li>
     </ul>
   </div>
 </template>
@@ -42,6 +40,7 @@
 <style scoped>
 .homeContent {
   width: 100%;
+  min-width: 1000px;
   height: 100vh;  
   /* background-color: blue; */
 }

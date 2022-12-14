@@ -74,7 +74,8 @@
   }
   #contact {
     width: 100%;
-    height: 40vh;
+    min-width: 1000px;
+    height: 450px;
     background-color: var(--mainColor);
     display: flex;
     flex-direction: column;
@@ -122,9 +123,10 @@
     display: flex;
   }
   #cate>ul {
-    margin-right: 5rem;
+    margin-right: 2rem;
   }
   #cate>ul>li {
+    min-width: 100px;
     margin-bottom: 1rem;
     font-size: 0.8rem;
   }

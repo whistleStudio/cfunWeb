@@ -61,12 +61,28 @@
         } else {
           return {backgroundImage: `url(${require("assets/img/cflogo2.png")})`}
         }
+      },
+      isMobilePhone() {
+        const ua = navigator.userAgent.toLowerCase();
+        const t1 = /android|webos|iphone|ipod|blackberry|iemobile|opera mini/i.test(ua);
+        return t1 ;
       }
     },
     methods: {
       changeStyle () {
         
       }
+    },
+    // created () {
+      
+    //   console.log(this.isMobilePhone)
+    // },
+    mounted () {
+      if (this.isMobilePhone) {
+        let oNav = document.querySelector("#PNavbar")
+        oNav.style.position = "relative"
+        oNav.style.backgroundColor = "rgb(0, 160, 232)"
+      } 
     }
   }
 </script>
@@ -76,6 +92,7 @@
     position: fixed;
     box-sizing: border-box;
     width: 100%;
+    min-width: 1000px;
     height: 75px;
     z-index: 9;
   }
