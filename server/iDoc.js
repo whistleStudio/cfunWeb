@@ -5,15 +5,15 @@ const Doc = require("./core/db/Doc")
 
 main().catch(err => console.log(err));
  
-const docArr = ["控制器", "执行器", "传感器"]
+const docArr = ["控制器", "执行器", "传感器", "通讯模块", "人工智能"]
 async function main() {
   await mongoose.connect(`mongodb://wsh:19930304wsh@localhost:${PORT}/${DbName}`);
   console.log(`db:${DbName} connected on port:${PORT}`)
   const myDoc = {
-    title: "旋钮模块",
-    cate: 2,
-    item: 2,
-    keyword: "模拟|角度",
+    title: "语音识别模块",
+    cate: 4,
+    item: 1,
+    keyword: "IIC|语音识别",
     src: ""
   }
   const defaultSrc = `https://dict.cfunworld.com/doc/${myDoc.cate}_${docArr[myDoc.cate]}/${to2Num(myDoc.item)}_${myDoc.title}/${myDoc.title}.html`
