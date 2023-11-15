@@ -30,7 +30,7 @@ rt.get("/getPage", (req, res) => {
 
 
 /* -----------PC端------------- */
-const pcHomepageUrl = "https://dict.cfunworld.com/doc/0_控制器/01_CF-Board-A主控板/CF-Board-A主控板.html"
+const pcHomepageUrl = "https://dict.cfunworld.com/doc/0_%E6%8E%A7%E5%88%B6%E5%99%A8/01_CF-Board-A%28B%29%E4%B8%BB%E6%8E%A7%E6%9D%BF/CF-Board-A%28B%29%E4%B8%BB%E6%8E%A7%E6%9D%BF.html"
 /* --------------------------- */
 
 
