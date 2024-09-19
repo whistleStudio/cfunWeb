@@ -8,13 +8,13 @@
       </div>
       <!-- <div class="slogan">一个能让创意变为现实的编程软件</div> -->
       <div class="dl" @mouseenter="isDlHover=true" @mouseout="isDlHover=false" @click="openDl">
-        <span v-if="!isDlHover">下载离线客户端</span>
+        <span v-if="!isDlHover">下载离线客户端{{ aicodestar.version }}</span>
         <div class="flex-center" v-else> 
           <svg class="win" t="1667874426262" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2651" width="200" height="200"><path d="M462.3 487.1V122.9L64.5 185.5v301.6zM512 536.9v372l447.5 70.5V536.9zM512 487.1h447.5V44.6L512 115zM462.3 536.9H64.5v301.6l397.8 62.6z" p-id="2652"></path></svg>  
           <span>win7及以上 64位</span>
         </div>
       </div>
-      <a href="https://drive.weixin.qq.com/s?k=ANgAgQejAFQ8wmv8OD" target="_blank">系统不支持？获取兼容版软件AS-Block</a>
+      <a href="https://drive.weixin.qq.com/s?k=ANgAgQejAFQtBWXlMc" target="_blank">系统不支持？获取兼容版软件AS-Block</a>
     </div>
     <ul class="soft-intro flex-col-center">
       <li class="flex-col-center" v-for="(v, i) in intro" :key="i">
@@ -35,16 +35,32 @@
         intro: [
           {title: "深入浅出", sum: "图形化与代码相结合，优化传统编程学习途径", img: "https://dict.cfunworld.com/img/cfweb/product/psoftware0.png"},
           {title: "拓展丰富", sum: "支持海量硬件模块拓展，满足人工智能、物联网等进阶应用", img: "https://dict.cfunworld.com/img/cfweb/product/psoftware1.png"}
-        ]
+        ],
+        aicodestar: {version: "", url: "https://drive.weixin.qq.com/s?k=ANgAgQejAFQ8VYIJ3K"},
+        isDownloading: false
       };
     },
     methods: {
       openDl () {
-        window.open("https://drive.weixin.qq.com/s?k=ANgAgQejAFQs58EpZu")
+        if (!this.isDownloading) window.open(this.aicodestar.url)
+        else alert("正在下载，请稍等...")
+        this.isDownloading = true
       }
     },
     components: {},
-    created () {console.log("ps")}
+    created () {console.log("ps")},
+    mounted () {
+      fetch(`/api/info/getInfo?k1=aicodestar&k2=0`)
+      .then(res => res.json()
+      .then(data => {
+        if(!data.err) {
+          this.aicodestar.version = data.v.v1
+          this.aicodestar.url = data.v.v2
+        }
+      })
+    )
+    }
+  
   }
 </script>
 

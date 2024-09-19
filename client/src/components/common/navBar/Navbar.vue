@@ -50,15 +50,26 @@ export default {
     // }
   },
   methods: {
+    // some custom features
     toHome () {
       this.$router.push("/home")
     },
     toPage1 (path, k) {
-      if (!(k===1 || k===6)) this.$router.push(path)
+      if (!(k===1 || k===6 || k===5)) this.$router.push(path)
     },
     toPage2 (path, k) {
-      if (k===1) window.open("https://cfunworld.taobao.com/category.htm?spm=a1z10.5-c.w4010-6544316521.2.5832602fxUYF1K&search=y")
-      else this.$router.push(path)
+      switch (path) {
+        case "/support/mall":
+          window.open("https://cfunworld.taobao.com/category.htm?spm=a1z10.5-c.w4010-6544316521.2.5832602fxUYF1K&search=y")
+          break
+        // case "kits":
+        //   break
+        case "/support/download":
+          window.open("https://dict.cfunworld.com/download/index.html")
+          break
+        default:
+        this.$router.push(path)
+      }
     },
     toProduct (path, id) {
       this.$router.push({path, query:{id}})

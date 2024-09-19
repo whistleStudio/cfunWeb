@@ -7,6 +7,7 @@ require("./core/db/connect")
 const docApi = require("./core/api/docApi")
 const queApi = require("./core/api/queApi")
 const creativeApi = require("./core/api/creativeApi")
+const infoApi = require("./core/api/infoApi")
 
 
 app.use(express.json());
@@ -20,6 +21,7 @@ app.get("/", (req, res) => {
 app.use('/api/doc', docApi)
 app.use('/api/que', queApi)
 app.use('/api/creative', creativeApi)
+app.use('/api/info', infoApi)
 
 
 app.listen(PORT, () => {
