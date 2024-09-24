@@ -31,7 +31,7 @@
             id: 5, val: {id: 0, title: "技术文档", eng: "/documents"},
             clist: [
               {ctitle: "电子模块", path: "/documents"},
-              {ctitle: "智能套装", path: "/documents"}
+              {ctitle: "智能套装", path: "/kits"}
             ]
           },
           // {id: 5, val: {id: 0, title: "解决方案", eng: "/solution"}},
