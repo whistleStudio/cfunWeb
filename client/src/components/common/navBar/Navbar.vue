@@ -63,10 +63,12 @@ export default {
           window.open("https://cfunworld.taobao.com/category.htm?spm=a1z10.5-c.w4010-6544316521.2.5832602fxUYF1K&search=y")
           break
         case "/kits":
-          window.open("https://dict.cfunworld.com/tutorial/cfdsx/01_lamp/%E7%BB%93%E6%9E%84%E6%90%AD%E5%BB%BA.html")
+          // window.location.href="https://dict.cfunworld.com/tutorial/cfdsx/01_lamp/%E7%BB%93%E6%9E%84%E6%90%AD%E5%BB%BA.html"
+          window.open(`https://dict.cfunworld.com/tutorial/cfdsx/`)
           break
         case "/support/download":
-          window.open("https://dict.cfunworld.com/download/")
+          // window.location.href="https://dict.cfunworld.com/download/"
+          window.open(`https://dict.cfunworld.com/download?${new Date().getTime()}`, "_blank")
           break
         default:
         this.$router.push(path)

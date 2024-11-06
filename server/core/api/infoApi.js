@@ -1,8 +1,10 @@
 const express = require("express")
 const rt = express.Router()
 const Info = require("../db/Info")
+const cors = require('cors')
+
 /* 获得分类列表 */
-rt.get("/getInfo", (req, res) => {
+rt.get("/getInfo", cors(), (req, res) => {
   try {
     let {k1, k2} = req.query
     ;(async ()=>{
