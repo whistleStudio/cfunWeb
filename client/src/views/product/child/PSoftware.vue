@@ -14,7 +14,8 @@
           <span>win7及以上 64位</span>
         </div>
       </div>
-      <a href="https://drive.weixin.qq.com/s?k=ANgAgQejAFQtBWXlMc" target="_blank">系统不支持？获取兼容版软件AS-Block</a>
+      <a href="https://drive.weixin.qq.com/s?k=ANgAgQejAFQ1mkHGOg" target="_blank">- 点击获取更多版本编程星空</a>
+      <a href="https://drive.weixin.qq.com/s?k=ANgAgQejAFQtBWXlMc" target="_blank">- 点击获取旧版本软件AS-Block</a>
     </div>
     <ul class="soft-intro flex-col-center">
       <li class="flex-col-center" v-for="(v, i) in intro" :key="i">
