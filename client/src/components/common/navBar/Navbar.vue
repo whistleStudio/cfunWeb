@@ -66,6 +66,9 @@ export default {
           // window.location.href="https://dict.cfunworld.com/tutorial/cfdsx/01_lamp/%E7%BB%93%E6%9E%84%E6%90%AD%E5%BB%BA.html"
           window.open(`https://dict.cfunworld.com/tutorial/cfdsx/`)
           break
+        case "/hellocar":
+          window.open(`https://dict.cfunworld.com/tutorial/hellocardoc/index.html`)
+          break
         case "/support/download":
           // window.location.href="https://dict.cfunworld.com/download/"
           window.open(`https://dict.cfunworld.com/download?${new Date().getTime()}`, "_blank")
