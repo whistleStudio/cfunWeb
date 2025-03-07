@@ -13,14 +13,16 @@
             @mouseleave="actTitleId=-1">
               <ul  class="hor">
                 <li v-for="(c, i) in item.clist" :key="i" @click="toProduct(c.path, i)">
-                  <span>{{c.ctitle}}</span>
+                  <span>{{c.ctitle}}</span> 
                   <div :style="{backgroundImage: `url(${c.img})`}"></div>
                 </li>
               </ul>
             </div>
             <div v-else-if="actTitleId===item.id && item.clist" id="navCMenu2">
               <ul class="ver">
-                <li v-for="(c, i) in item.clist" :key="i" @click="toPage2(c.path, i)"> <span>{{c.ctitle}}</span></li>
+                <li v-for="(c, i) in item.clist" :key="i" @click="toPage2(c.path, i)"> 
+                  <span>{{c.ctitle}}</span> <span v-if="c.ctag" class="ctag">{{ c.ctag }}</span>
+                </li>
               </ul>
             </div>
           </li>
@@ -65,6 +67,9 @@ export default {
         case "/kits":
           // window.location.href="https://dict.cfunworld.com/tutorial/cfdsx/01_lamp/%E7%BB%93%E6%9E%84%E6%90%AD%E5%BB%BA.html"
           window.open(`https://dict.cfunworld.com/tutorial/cfdsx/`)
+          break
+        case "/ipyb":
+          window.open(`https://dict.cfunworld.com/tutorial/cfipyb/index.html`)
           break
         case "/hellocar":
           window.open(`https://dict.cfunworld.com/tutorial/hellocardoc/index.html`)
@@ -175,18 +180,28 @@ export default {
     background-color: white;
     font:  1.1rem/2.6rem "Microsoft YaHei";
     color: rgb(150, 150, 150);
+    border-radius: 0 0 5px 5px;
   }
   .ver>li {
-    display: flex;
-    align-items: center;
+    /* display: flex;
+    align-items: center; */
     box-sizing: border-box;
     min-height: 30px;
     border-top: 1px solid var(--rFontColorAA);
+    padding: 0 10px;
   }
   .ver>li>span {
-    display: block;
+    /* display: block; */
     width: 100%;
     text-align: center;
+  }
+
+  .ctag {
+    color: white;
+    font-size: 12px !important;
+    background-color: var(--rFontColorAA);
+    border-radius: 3px;
+    padding: 5px;
   }
 
   .titleHover {
