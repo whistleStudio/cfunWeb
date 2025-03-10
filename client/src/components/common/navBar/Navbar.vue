@@ -189,9 +189,10 @@ export default {
     min-height: 30px;
     border-top: 1px solid var(--rFontColorAA);
     padding: 0 10px;
+    white-space: nowrap !important;
+
   }
   .ver>li>span {
-    /* display: block; */
     width: 100%;
     text-align: center;
   }
