@@ -6,7 +6,8 @@
       <div id="resume">
         <h1>图形化编程软件</h1>
         <h2>支持开源硬件和人工智能扩展</h2>
-        <div id="startCode" @click="goAicode">开始编程</div>
+        <div id="startCode" class="home-btn" @click="goAicode">开始编程</div>
+        <div id="startIot" class="home-btn" @click="goIot">物联平台</div>
       </div>
     </div>
   </div>
@@ -21,6 +22,10 @@
     methods: {
       goAicode () {
         window.open('https://www.aicodestar.com', '_blank')
+      },
+
+      goIot () {
+        window.open('https://iot.cfunworld.com', '_blank')
       }
     },
     components: {},
@@ -73,7 +78,8 @@
   color: rgb(196, 246, 255);
   display: block;
 }
-#startCode {
+
+.home-btn {
   text-align: center;
   font: bold 30px/60px "HeiTi";
   color: rgba(255,255,255,0.8);
@@ -81,12 +87,20 @@
   width: 300px;
   height: 60px;
   border-radius: 30px;
-  background-image: linear-gradient(45deg, rgb(254, 183, 66), rgb(255, 98, 103));
   box-shadow: 2px 2px 2px 1px gray;
   cursor: pointer;
 }
-#startCode:hover {
+.home-btn:hover {
   color: white;
   box-shadow: 2px 2px 2px 1px inset gray;
+}
+
+#startCode {
+  background-image: linear-gradient(45deg, rgb(254, 183, 66), rgb(255, 98, 103));
+}
+
+#startIot {
+  margin-top: 20px;
+  background-image: linear-gradient(45deg, rgb(254, 183, 66), rgb(98, 255, 234));
 }
 </style>

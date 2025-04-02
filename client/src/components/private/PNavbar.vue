@@ -31,8 +31,8 @@
             id: 5, val: {id: 0, title: "技术文档", eng: "/documents"},
             clist: [
               {ctitle: "电子模块", path: "/documents"},
-              {ctitle: "智能套装", path: "/kits", ctag: "小学信息科学"},
-              {ctitle: "智能实验箱", path: "/ipyb", ctag: "初中信息科学"},
+              {ctitle: "智能套装", path: "/kits", ctag: "小学信息科技"},
+              {ctitle: "智能实验箱", path: "/ipyb", ctag: "小学/初中信息科技"},
               {ctitle: "HelloCar", path: "/hellocar"}
             ]
           },
