@@ -20,7 +20,8 @@
               {ctitle: "非编程系列", img: "https://dict.cfunworld.com/img/cfweb/product/cl1.png", path: "/product"},
               {ctitle: "编程系列", img: "https://dict.cfunworld.com/img/cfweb/product/cl2.png", path: "/product"},
               {ctitle: "机器人系列", img: "https://dict.cfunworld.com/img/cfweb/product/cl4.png", path: "/product"},
-              {ctitle: "创意制作系列", img: "https://dict.cfunworld.com/img/cfweb/product/cl3.png", path: "/product"},
+              {ctitle: "信息科技", img: "https://dict.cfunworld.com/img/cfweb/product/cl6.png", path: "/product"},
+              {ctitle: "创意制作", img: "https://dict.cfunworld.com/img/cfweb/product/cl3.png", path: "/product"},
               {ctitle: "创客空间", img: "https://dict.cfunworld.com/img/cfweb/product/cl5.png", path: "/solution"}
             ]           
           },
