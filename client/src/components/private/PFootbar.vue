@@ -198,35 +198,26 @@
     #contact > div {
       flex-direction: column;
       width: 100%;
-      align-items: center;
+      align-items: center; /* 让 flex item (info, cate, qrcode) 自身居中 */
     }
     #info, #cate, #qrcode {
       width: 100% !important;
       flex: unset;
-      padding: 0.5rem 0;
+      padding: 0.5rem 1rem;
       margin: 0;
       border: none;
-    }
-    #info > img {
-      width: 60%;
-      min-width: 120px;
+      text-align: center; /* 让容器内部的文字居中 */
+      display: flex;
+      flex-direction: column;
+      align-items: center; /* 确保图片等块级元素也居中 */
     }
     #cate {
-      flex-direction: column;
-      border: none;
-      align-items: flex-start;
-      padding: 0.5rem 1rem;
-    }
-    #cate > ul {
-      margin-right: 1rem;
-    }
-    #qrcode > img {
-      width: 40vw;
-      min-width: 80px;
+      align-items: center; /* 覆盖之前的 align-items: flex-start */
     }
     #ICP {
       font-size: 12px;
       padding: 0.5rem;
+      text-align: center;
     }
   }
 </style>

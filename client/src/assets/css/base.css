@@ -23,6 +23,7 @@ ul {
   --rFontColor: rgb(0, 160, 232);
   --rFontColorA: rgba(0, 160, 232, 0.8);
   --rFontColorAA: rgba(0, 160, 232, 0.4);
+  --mainColor: rgb(0, 160, 232);
 }
 .hide {
   display: none !important;
