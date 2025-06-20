@@ -1,9 +1,7 @@
-<!-- common navbar -->
 <template>
   <div id="navbar" @mouseleave="actTitleId=-1">
     <div>
-      <div id="logo" :style="logoStyle" @click="toHome">
-      </div>
+      <div id="logo" :style="logoStyle" @click="toHome"></div>
       <div id="nav">
         <ul id="navMenu">
           <li v-for="item in navbarList" :key="item.id" 
@@ -46,13 +44,7 @@ export default {
     navCMenuBgc: String
   },
   components: {},
-  computed: {
-    // navLiStyle () {
-    //   return {"--navColor": this.fontColor}
-    // }
-  },
   methods: {
-    // some custom features
     toHome () {
       this.$router.push("/home")
     },
@@ -65,7 +57,6 @@ export default {
           window.open("https://cfunworld.taobao.com/category.htm?spm=a1z10.5-c.w4010-6544316521.2.5832602fxUYF1K&search=y")
           break
         case "/kits":
-          // window.location.href="https://dict.cfunworld.com/tutorial/cfdsx/01_lamp/%E7%BB%93%E6%9E%84%E6%90%AD%E5%BB%BA.html"
           window.open(`https://dict.cfunworld.com/tutorial/cfdsx/`)
           break
         case "/ipyb":
@@ -75,7 +66,6 @@ export default {
           window.open(`https://dict.cfunworld.com/tutorial/hellocardoc/index.html`)
           break
         case "/support/download":
-          // window.location.href="https://dict.cfunworld.com/download/"
           window.open(`https://dict.cfunworld.com/download?${new Date().getTime()}`, "_blank")
           break
         default:
@@ -94,127 +84,227 @@ export default {
 }
 </script>
 
-<style lang='css' scoped>
-  /* root样式 --rFontColor */
-  * {
-    --mainColor: var(--rFontColor)
-  }
-  #navbar {
-    width: 100%;
-    height: 100%;
-    /* background-color: pink; */
-    margin: 0 auto;
+<style scoped>
+/* PC端样式保持原有风格 */
+#navbar {
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: none;
+  background: transparent;
+}
+#navbar>div {
+  width: 80%;
+  height: 55px;
+}
+#logo {
+  width: calc(55px * 3.7);
+  height: 55px;
+  float: left;
+  background: center/contain no-repeat;
+  cursor: pointer;
+}
+#nav {
+  float: right;
+  height: 55px;
+}
+#navMenu {
+  display: flex;
+}
+#navMenu>li {
+  min-width: 90px;
+  font: bold 1.3rem/55px "Microsoft YaHei";
+  text-align: center;
+  margin-left: 4rem;
+  cursor: pointer;
+}
+#navCMenu1 {
+  position: absolute;
+  left: 0;
+  top: 75px;
+  width: 100vw;
+  min-width: 1000px;
+  height: 250px;
+  background-color: white;
+  box-sizing: border-box;
+  border-top: 2px solid ghostwhite;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#navCMenu1>.hor {
+  display: flex;
+  width: 80%;
+  height: 200px;
+}
+.hor>li {
+  flex: auto;
+  height: 200px;
+  border-left: 1px solid gainsboro;
+  box-sizing: border-box;
+  color: rgb(150, 150, 150);
+}
+.hor>li>span {
+  text-align: left;
+  text-indent: 15px;
+  display: block;
+  height: 40px;
+  font: bold 20px/40px "Microsoft YaHei";
+  border-left: 1px solid var(--mainColor);
+  box-sizing: border-box;
+}
+.hor>li>div {
+  height: 90%;
+  width: 100%;
+  background: center/contain no-repeat;
+}
+#navCMenu2 {
+  margin-top: 0.5rem;
+  background-color: white;
+  font:  1.1rem/2.6rem "Microsoft YaHei";
+  color: rgb(150, 150, 150);
+  border-radius: 0 0 5px 5px;
+}
+.ver>li {
+  box-sizing: border-box;
+  min-height: 30px;
+  border-top: 1px solid var(--rFontColorAA);
+  padding: 0 10px;
+  white-space: nowrap !important;
+}
+.ver>li>span {
+  width: 100%;
+  text-align: center;
+}
+
+.ctag {
+  color: white;
+  font-size: 12px !important;
+  background-color: var(--rFontColorAA);
+  border-radius: 3px;
+  padding: 5px;
+}
+
+.titleHover {
+  color: var(--mainColor);
+  font-weight: bold;
+}
+#navbar:hover {
+  background-color: white;
+  box-shadow: 1px 0 1px 1px ghostwhite;
+  color: rgb(100,100,100)
+}
+.hor>li:hover, .ver>li:hover {
+  color: var(--mainColor) ;
+}
+
+/* ========== 移动端美观自适应 ========== */
+@media (max-width: 768px) {
+  #navbar, #navbar>div {
+    min-width: 0 !important;
+    width: 100vw !important;
+    height: auto !important;
+    background: #23b1e6 !important;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    border-radius: 0 0 10px 10px;
+    padding: 0;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    box-shadow: none;
-  }
-  #navbar>div {
-    width: 80%;
-    height: 55px;
   }
   #logo {
-    width: calc(55px * 3.7);
-    height: 55px;
-    float: left;
-    background: center/contain no-repeat;
-    cursor: pointer;
+    width: 92px !important;
+    height: 36px !important;
+    margin: 12px auto 8px auto;
+    float: none;
+    background-size: contain !important;
+    background-position: center !important;
+    display: block;
   }
   #nav {
-    float: right;
-    /* background-color: olive; */
-    height: 55px;
+    float: none;
+    width: 100vw !important;
+    height: auto;
+    margin: 0 auto;
+    background: none !important;
+    box-shadow: none;
   }
   #navMenu {
     display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100vw;
+    padding: 0;
+    margin: 0;
+    background: none;
   }
   #navMenu>li {
-    min-width: 90px;
-    font: bold 1.3rem/55px "Microsoft YaHei";
+    min-width: 0 !important;
+    width: 100vw !important;
+    font-size: 1.05rem !important;
+    line-height: 2.5rem !important;
+    margin-left: 0 !important;
+    margin-bottom: 0.1rem;
     text-align: center;
-    margin-left: 4rem;
-    cursor: pointer;
+    color: #fff !important;
+    background: none !important;
+    font-weight: 500;
+    border-radius: 0;
+    transition: background 0.2s;
+    letter-spacing: 1px;
+    border-bottom: 1px solid rgba(255,255,255,0.13);
   }
-  #navCMenu1 {
-    position: absolute;
-    left: 0;
-    top: 75px;
-    width: 100vw;
-    min-width: 1000px;
-    height: 250px;
-    background-color: white;
-    box-sizing: border-box;
-    border-top: 2px solid ghostwhite;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  #navMenu>li:last-child {
+    border-bottom: none;
   }
-  #navCMenu1>.hor {
-    display: flex;
-    width: 80%;
-    height: 200px;
+  #navMenu>li:hover, #navMenu>li .titleHover {
+    color: #fff;
+    background: rgba(0,0,0,0.04);
   }
-  .hor>li {
-    flex: auto;
-    height: 200px;
-    border-left: 1px solid gainsboro;
-    box-sizing: border-box;
-    color: rgb(150, 150, 150);
+  #navCMenu1, #navCMenu2 {
+    position: static !important;
+    width: 100vw !important;
+    min-width: 0 !important;
+    height: auto !important;
+    background: #e3f6fd !important;
+    border: none;
+    box-shadow: none;
+    margin: 0;
+    padding: 0.5rem 0;
+    border-radius: 0;
+    z-index: 99;
   }
-  .hor>li>span {
-    text-align: left;
-    text-indent: 15px;
-    display: block;
-    height: 40px;
-    font: bold 20px/40px "Microsoft YaHei";
-    border-left: 1px solid var(--mainColor);
-    box-sizing: border-box;
+  .hor, .ver {
+    flex-direction: column !important;
+    width: 100vw !important;
+    height: auto !important;
   }
-  .hor>li>div {
-    height: 90%;
-    width: 100%;
-    background: center/contain no-repeat;
-  }
-  #navCMenu2 {
-    margin-top: 0.5rem;
-    background-color: white;
-    font:  1.1rem/2.6rem "Microsoft YaHei";
-    color: rgb(150, 150, 150);
-    border-radius: 0 0 5px 5px;
-  }
-  .ver>li {
-    /* display: flex;
-    align-items: center; */
-    box-sizing: border-box;
-    min-height: 30px;
-    border-top: 1px solid var(--rFontColorAA);
-    padding: 0 10px;
-    white-space: nowrap !important;
-
-  }
-  .ver>li>span {
-    width: 100%;
+  .hor>li, .ver>li {
+    width: 100vw !important;
+    padding: 0.5rem 0;
+    border: none !important;
+    border-bottom: 1px solid #bfe6f9;
+    background: none !important;
+    color: #222 !important;
+    font-size: .98rem !important;
     text-align: center;
   }
-
+  .hor>li:last-child, .ver>li:last-child {
+    border-bottom: none;
+  }
+  .hor>li>span, .ver>li>span {
+    text-align: center;
+    border: none !important;
+    font-size: 1.01rem !important;
+    padding: 0 !important;
+  }
   .ctag {
-    color: white;
-    font-size: 12px !important;
-    background-color: var(--rFontColorAA);
-    border-radius: 3px;
-    padding: 5px;
+    font-size: 11px !important;
+    padding: 3px 6px;
+    margin-left: 0.3rem;
   }
-
-  .titleHover {
-    color: var(--mainColor);
-    font-weight: bold;
-  }
-  #navbar:hover {
-    background-color: white;
-    box-shadow: 1px 0 1px 1px ghostwhite;
-    color: rgb(100,100,100)
-  }
-  .hor>li:hover, .ver>li:hover {
-    color: var(--mainColor) ;
-  }
+}
 </style>

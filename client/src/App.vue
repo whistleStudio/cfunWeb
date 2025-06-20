@@ -11,32 +11,25 @@ const PNavbar = ()=>import("components/private/PNavbar")
 const PFootbar = ()=>import("components/private/PFootbar")
 
 export default {
-  data () {
-    return {
-
-    }
-  },
-  computed: {
-    isMobilePhone() {
-      const ua = navigator.userAgent.toLowerCase();
-      const t1 = /android|webos|iphone|ipod|blackberry|iemobile|opera mini/i.test(ua);
-      return t1 ;
-    }
-  },
   components: {
     "p-navbar": PNavbar,
     "p-footbar": PFootbar
-  },
-  created () {
-    // if (this.isMobilePhone) window.location="https://dictwx.cfunworld.com"
   }
 }
 </script>
 
-
 <style>
   @import "assets/css/base.css";
   #app {
+    /* 仅PC端限制宽度，移动端自适应 */
     min-width: 1000px;
+    width: 100%;
+  }
+  @media (max-width: 768px) {
+    #app {
+      min-width: 0 !important;
+      width: 100vw !important;
+      overflow-x: hidden !important;
+    }
   }
 </style>

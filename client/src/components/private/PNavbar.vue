@@ -98,7 +98,7 @@
   }
 </script>
 
-<style lang='css' scoped>
+<style lang='scss' scoped>
   #PNavbar {
     position: fixed;
     box-sizing: border-box;
@@ -107,4 +107,47 @@
     height: 75px;
     z-index: 9;
   }
+
+/* 自适应 */
+@media (max-width: 768px) {
+  #navbar > div,
+  #navbar,
+  #PNavbar {
+    min-width: unset;
+    width: 100vw;
+    height: auto;
+  }
+  #logo {
+    width: 120px;
+    height: 40px;
+    float: none;
+    margin: 0 auto;
+  }
+  #nav {
+    float: none;
+    height: auto;
+  }
+  #navMenu {
+    display: block;
+    padding: 0;
+  }
+  #navMenu > li {
+    min-width: unset;
+    margin-left: 0;
+    font-size: 1rem;
+    line-height: 40px;
+    text-align: left;
+  }
+  #navCMenu1, #navCMenu2 {
+    position: static;
+    width: 100vw !important;
+    min-width: unset;
+    height: auto;
+  }
+  .hor, .ver {
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+  }
+}
 </style>

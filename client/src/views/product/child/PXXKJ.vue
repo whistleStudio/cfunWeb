@@ -69,9 +69,21 @@ $curColor: #40bccb;
       justify-content: center;
       align-items: center;
       margin:0 50px;
+      img {
+        width: 60px;
+        height: 60px;
+        min-width: 40px;
+        min-height: 40px;
+        max-width: 80px;
+        max-height: 80px;
+        opacity: 0.5;
+        margin-bottom: 0;
+        display: block;
+      }
       a {
         display: block;
-        font: 32px/60px $fontF;
+        font-size: 24px;
+        line-height: 36px;
         color: $curColor;
         margin-left: 10px;
         opacity: 0.8;
@@ -79,31 +91,90 @@ $curColor: #40bccb;
           opacity: 1;
           text-decoration: underline;
         }
+        span {
+          font-size: 18px;
+        }
       }
     }
   }
   >ul {
-    margin-top: 100px;
+    margin-top: 60px;
     >li {
-      margin-bottom: 130px;
+      margin-bottom: 80px;
       .p-title {
-        font: bold 40px/100px $fontF;
+        font: bold 28px/1.3 $fontF;
         color: $gray100;
+        text-align: center;
+        margin: 20px 0 8px 0;
       }
       .p-sum {
-        font: 30px/50px $fontF;
+        font: 16px/1.6 $fontF;
         color: $gray100;
-        margin-bottom: 30px;
+        margin-bottom: 14px;
+        text-align: center;
       }
       img {
-        width: 1200px;
-        margin-bottom: 20px;
+        width: 100%;
+        max-width: 600px;
+        margin: 0 auto 20px auto;
+        display: block;
       }
       video {
-        width: 1200px;
+        width: 100%;
+        max-width: 600px;
+        margin: 0 auto;
         border-radius: 10px;
         box-shadow: 1px 1px 1px 1px gray;
+        display: block;
       } 
+    }
+  }
+}
+
+/* 响应式移动端适配 */
+@media (max-width: 768px) {
+  .program {
+    width: 100vw !important;
+    > ul {
+      margin-top: 20px;
+      > li {
+        margin-bottom: 30px;
+        .p-title {
+          font: bold 18px/1.3 $fontF;
+          margin: 12px 0 4px 0;
+        }
+        .p-sum {
+          font-size: 14px;
+          margin-bottom: 8px;
+          line-height: 1.5;
+        }
+        // img,
+        // video {
+        //   width: auto !important;
+        //   max-width: auto !important;
+        // }
+      }
+    }
+    .books {
+      flex-direction: column;
+      > div {
+        margin: 8px 0;
+        img {
+          width: 36px;
+          height: 36px;
+          min-width: 24px;
+          min-height: 24px;
+          max-width: 48px;
+          max-height: 48px;
+        }
+        a {
+          font-size: 15px !important;
+          line-height: 28px !important;
+          span {
+            font-size: 14px !important;
+          }
+        }
+      }
     }
   }
 }

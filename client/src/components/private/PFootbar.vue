@@ -186,4 +186,47 @@
   #ICP a:hover {
     text-decoration: underline;
   }
+
+/* 在<style scoped>最后追加 */
+  @media (max-width: 768px) {
+    #contact {
+      min-width: 0 !important;
+      width: 100vw !important;
+      height: auto;
+      padding-top: 1rem;
+    }
+    #contact > div {
+      flex-direction: column;
+      width: 100%;
+      align-items: center;
+    }
+    #info, #cate, #qrcode {
+      width: 100% !important;
+      flex: unset;
+      padding: 0.5rem 0;
+      margin: 0;
+      border: none;
+    }
+    #info > img {
+      width: 60%;
+      min-width: 120px;
+    }
+    #cate {
+      flex-direction: column;
+      border: none;
+      align-items: flex-start;
+      padding: 0.5rem 1rem;
+    }
+    #cate > ul {
+      margin-right: 1rem;
+    }
+    #qrcode > img {
+      width: 40vw;
+      min-width: 80px;
+    }
+    #ICP {
+      font-size: 12px;
+      padding: 0.5rem;
+    }
+  }
 </style>
