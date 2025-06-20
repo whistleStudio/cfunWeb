@@ -32,9 +32,10 @@
             id: 5, val: {id: 0, title: "技术文档", eng: "/documents"},
             clist: [
               {ctitle: "电子模块", path: "/documents"},
+              {ctitle: "HelloCar", path: "/hellocar"},
               {ctitle: "智能套装", path: "/kits", ctag: "小学信息科技"},
               {ctitle: "智能实验箱", path: "/ipyb", ctag: "小学/初中信息科技"},
-              {ctitle: "HelloCar", path: "/hellocar"}
+              {ctitle: "创趣星盒", path: "/product?id=4", ctag: "全国多版信息科技"},
             ]
           },
           // {id: 5, val: {id: 0, title: "解决方案", eng: "/solution"}},

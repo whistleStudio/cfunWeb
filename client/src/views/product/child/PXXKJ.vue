@@ -13,6 +13,7 @@
         </div>
         <img :src="list[0].img" alt="" style="margin-bottom: 30px;">
         <img :src="list[0].img2" alt="">
+        <video :src="list[0].vid" :poster="list[0].poster" controls></video>
       </li>
       <li class="flex-col-center">
         <div class="p-title">{{list[1].title}}</div>
@@ -31,9 +32,11 @@
       return {
         list: [
           {
-            title: "创趣智能实验盒", sum: "适配信息科技新课标，集成丰富支持外扩，车、控多形态", 
+            title: "创趣星盒", sum: "适配信息科技新课标，集成丰富支持外扩，车、控多形态", 
             img: "https://dict.cfunworld.com/img/cfweb/product/xxkj1.jpg", 
-            img2: "https://dict.cfunworld.com/img/cfweb/product/xxkj2.jpg", 
+            img2: "https://dict.cfunworld.com/img/cfweb/product/xxkj2.jpg",
+            poster: "https://dict.cfunworld.com/img/cfweb/product/%E5%88%9B%E8%B6%A3%E6%98%9F%E7%9B%92%E8%A7%86%E9%A2%91%E5%B0%81%E9%9D%A2.jpg",
+            vid: "https://dict.cfunworld.com/img/cfweb/product/%E5%88%9B%E8%B6%A3%E6%98%9F%E7%9B%92%E6%BC%94%E7%A4%BA.mp4" 
           },
           {
             title: "场景实践套装", sum: "适配苏教新课标，智能场景还原，快拆快搭", 
@@ -43,8 +46,8 @@
           }  
         ],
         bookList: [
+          {title: "《义教版教学指南适配》", link: "https://dict.cfunworld.com/tutorial/starbox_yj/index.html"},
           {title: "《苏教版教材适配》", link: "https://dict.cfunworld.com/img/cfweb/product/%E8%8B%8F%E6%95%99%E7%89%88%E6%95%99%E6%9D%90%E9%80%82%E9%85%8D%E6%B8%85%E5%8D%95.png"},
-          {title: "《义教版教学指南适配》", link: "https://dict.cfunworld.com/img/cfweb/product/%E4%B9%89%E6%95%99%E7%89%88%E6%95%99%E5%AD%A6%E6%8C%87%E5%8D%97%E9%80%82%E9%85%8D%E6%B8%85%E5%8D%95.png"},
         ]
       };
     },

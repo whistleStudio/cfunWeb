@@ -1,4 +1,9 @@
 **/node_modules
 .vscode
 *.7z
+*.zip
 **/dist
+*.jpg
+*.jpeg
+*.png
+*.gif
