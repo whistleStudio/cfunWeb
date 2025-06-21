@@ -1,7 +1,8 @@
 const TerserPlugin = require("terser-webpack-plugin")
 // const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 const CompressionPlugin = require("compression-webpack-plugin")
-
+// 检查是否在生产环境
+const isProduction = process.env.NODE_ENV === "production"
 module.exports = {
   productionSourceMap:false,
   configureWebpack: {
@@ -22,17 +23,18 @@ module.exports = {
       }
     },
     optimization: {
-      // minimize: true,
-      // minimizer: [
-      //   new TerserPlugin({
-      //     terserOptions: {
-      //       compress: {
-      //         drop_console: true, // 默认false，设置为true, 则会删除所有console.* 相关的代码。
-      //         pure_funcs: ["console.log"], // 单纯禁用console.log
-      //       }
-      //     }
-      //   })
-      // ]
+      // 生产环境
+      minimize: isProduction ? true : false,
+      minimizer: isProduction ? [
+        new TerserPlugin({
+          terserOptions: {
+            compress: {
+              drop_console: true, // 默认false，设置为true, 则会删除所有console.* 相关的代码。
+              pure_funcs: ["console.log"], // 单纯禁用console.log
+            }
+          }
+        })
+      ] : []
     },
     externals: {
       Vue: "Vue",
