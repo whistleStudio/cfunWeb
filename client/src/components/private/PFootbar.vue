@@ -4,19 +4,19 @@
     <div>
       <div id="info">
         <img :src="logoSrc" alt="创趣天地">
-        <div v-for="i in infoData" :key="i.id">
+        <div v-for="i in infoData" :key="i.id" v-if="!isMobile">
           <div :style="{backgroundImage: i.img}"></div>
           <span>{{i.text}}</span>
         </div>
       </div>
-      <div id="cate">
+      <div id="cate" v-if="!isMobile">
         <ul v-for="c in cateData" :key="c.id">
           <li>{{c.head}}</li>
           <li v-for="i in c.item" :key="i.id">{{i.v}}</li>
         </ul>       
       </div>
       <div id="qrcode">
-        <ul>
+        <ul v-if="!isMobile">
           <li v-for="icon in qrImg.slice(0,qrImg.length-1)" :key="icon.id" 
           :style="{backgroundImage: icon.link}"></li>
         </ul>
@@ -34,6 +34,7 @@
   export default {
     data () {
       return {
+        isMobile: window.innerWidth < 768,
         logoSrc: require("img/cflogo3.png"),
         infoData: [
           {id:0, img:`url(${require("img/footbar/contactIcon0.png")})`, text:"400-8231-300"},
@@ -62,11 +63,24 @@
         ]
       };
     },
-    components: {},
+    methods: {
+      // 监听窗口大小变化
+      handleResize() {
+        this.isMobile = window.innerWidth < 768;
+      }
+    },
+    mounted() {
+      // 添加窗口大小变化的监听器
+      window.addEventListener('resize', this.handleResize);
+    },
+    beforeDestroy() {
+      // 移除监听器，避免内存泄漏
+      window.removeEventListener('resize', this.handleResize);
+    }
   }
 </script>
 
-<style lang='css' scoped>
+<style lang='scss' scoped>
   * {
     /* 需要root样式--rFontColor */
     --mainColor: var(--rFontColor);
@@ -210,12 +224,13 @@
       display: flex;
       flex-direction: column;
       align-items: center; /* 确保图片等块级元素也居中 */
+      font-size: 0.7rem; /* 调整字体大小 */
     }
     #cate {
       align-items: center; /* 覆盖之前的 align-items: flex-start */
     }
     #ICP {
-      font-size: 12px;
+      font-size: 0.5rem;
       padding: 0.5rem;
       text-align: center;
     }

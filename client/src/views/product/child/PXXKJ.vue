@@ -87,6 +87,7 @@ $curColor: #40bccb;
         color: $curColor;
         margin-left: 10px;
         opacity: 0.8;
+        white-space: nowrap;
         &:hover {
           opacity: 1;
           text-decoration: underline;
@@ -102,13 +103,13 @@ $curColor: #40bccb;
     >li {
       margin-bottom: 80px;
       .p-title {
-        font: bold 28px/1.3 $fontF;
+        font: bold 32px/1.3 $fontF;
         color: $gray100;
         text-align: center;
         margin: 20px 0 8px 0;
       }
       .p-sum {
-        font: 16px/1.6 $fontF;
+        font: 18px/1.6 $fontF;
         color: $gray100;
         margin-bottom: 14px;
         text-align: center;

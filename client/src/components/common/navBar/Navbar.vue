@@ -22,10 +22,9 @@
             @mouseleave="!isMobile && titleMouseLeave(item)"
           >
             <span
-              @click="toPage1(item.val.eng, item.id)"
+              @click="onTitleClick(item)"
               :class="{ titleHover: actTitleId === item.id }"
-              >{{ item.val.title }}</span
-            >
+            >{{ item.val.title }}</span>
             <div
               id="navCMenu1"
               v-if="actTitleId === item.id && item.clist && item.id === 1"
@@ -35,7 +34,7 @@
                 <li
                   v-for="(c, i) in item.clist"
                   :key="i"
-                  @click="toProduct(c.path, i)"
+                  @click="onSubMenuClick(item, c, i)"
                 >
                   <span>{{ c.ctitle }}</span>
                   <div :style="{ backgroundImage: `url(${c.img})` }"></div>
@@ -50,7 +49,7 @@
                 <li
                   v-for="(c, i) in item.clist"
                   :key="i"
-                  @click="toPage2(c.path, i)"
+                  @click="onSubMenuClick(item, c, i)"
                 >
                   <span>{{ c.ctitle }}</span>
                   <span v-if="c.ctag" class="ctag">{{ c.ctag }}</span>
@@ -79,6 +78,15 @@ export default {
     navCMenuBgc: String,
     navStyleFlag: Number,
     isMenuOpen: { type: Boolean, default: false }
+  },
+  watch: {
+    isMenuOpen(val) {
+      if (this.isMobile && val) {
+        document.body.addEventListener('click', this.handleBodyClick, true);
+      } else {
+        document.body.removeEventListener('click', this.handleBodyClick, true);
+      }
+    }
   },
   methods: {
     toHome() {
@@ -133,17 +141,48 @@ export default {
       }
     },
     onHamburgerClick() {
-      console.log('Hamburger menu clicked');
       this.$emit('toggle-menu');
+      this.actTitleId = -1; // 点击汉堡菜单时重置标题ID
+    },
+    onTitleClick(item) {
+      if (this.isMobile) {
+        if (item.clist) {
+          // 若有二级菜单，则展开/收起
+          this.actTitleId = this.actTitleId === item.id ? -1 : item.id;
+        } else {
+          this.toPage1(item.val.eng, item.id);
+          this.$emit('toggle-menu', false);
+        }
+      } else {
+        this.toPage1(item.val.eng, item.id);
+      }
+    },
+    onSubMenuClick(item, c, i) {
+      if (item.id === 1) {
+        this.toProduct(c.path, i);
+      } else {
+        this.toPage2(c.path, i);
+      }
+      if (this.isMobile) {
+        this.actTitleId = -1;
+        this.$emit('toggle-menu', false);
+      }
+    },
+    handleBodyClick(e) {
+      // 如果点击在navbar区域内，不处理
+      if (this.$el.contains(e.target)) return;
+      // 否则关闭菜单
+      this.$emit('toggle-menu', false);
+      this.actTitleId = -1;
     }
   },
   mounted() {
-  this.checkMobile();
-  window.addEventListener("resize", this.checkMobile);
-  console.log('navbarList:', this.navbarList);
+    this.checkMobile();
+    window.addEventListener("resize", this.checkMobile);
   },
   beforeDestroy() {
     window.removeEventListener("resize", this.checkMobile);
+    document.body.removeEventListener('click', this.handleBodyClick, true);
   }
 };
 </script>
