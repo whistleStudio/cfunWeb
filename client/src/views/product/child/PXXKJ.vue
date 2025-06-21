@@ -135,10 +135,19 @@ $curColor: #40bccb;
 @media (max-width: 768px) {
   .program {
     width: 100vw !important;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     > ul {
       margin-top: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       > li {
         margin-bottom: 30px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
         .p-title {
           font: bold 18px/1.3 $fontF;
           margin: 12px 0 4px 0;
@@ -148,15 +157,11 @@ $curColor: #40bccb;
           margin-bottom: 8px;
           line-height: 1.5;
         }
-        // img,
-        // video {
-        //   width: auto !important;
-        //   max-width: auto !important;
-        // }
       }
     }
     .books {
       flex-direction: column;
+      align-items: center;
       > div {
         margin: 8px 0;
         img {

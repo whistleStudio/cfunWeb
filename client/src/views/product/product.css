@@ -26,5 +26,7 @@
     width: 92vw; /* 内容区域也需要适配 */
     min-width: 0;
     margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
   }
 }

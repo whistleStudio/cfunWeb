@@ -41,7 +41,7 @@ export default {
             {ctitle: "HelloCar", path: "/hellocar"},
             {ctitle: "智能套装", path: "/kits", ctag: "小学信息科技"},
             {ctitle: "智能实验箱", path: "/ipyb", ctag: "小学/初中信息科技"},
-            {ctitle: "创趣星盒", path: "/product?id=4", ctag: "全国多版信息科技"},
+            {ctitle: "创趣星盒", path: "/cf_starbox", ctag: "全国多版信息科技"},
           ]
         },
         {
@@ -82,15 +82,19 @@ export default {
     }
   },
   methods: {
-    toggleMenu() {
-      console.log("toggleMenu", this.isMenuOpen);
-      this.isMenuOpen = !this.isMenuOpen;
+    toggleMenu(val) {
+      if (typeof val === 'boolean') {
+        this.isMenuOpen = val;
+      } else if (window.innerWidth <= 768) {
+        this.isMenuOpen = !this.isMenuOpen;
+        console.log("isMenuOpen:", this.isMenuOpen);
+      }
     }
   },
   mounted () {
     if (this.isMobilePhone) {
       let oNav = document.querySelector("#PNavbar")
-      oNav.style.position = "relative"
+      // oNav.style.position = "relative"
       oNav.style.backgroundColor = "rgb(0, 160, 232)"
     }
   }
