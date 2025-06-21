@@ -12,7 +12,7 @@
         <span></span>
         <span></span>
       </div>
-      <!-- PC端始终显示菜单，移动端由isMenuOpen控制 -->
+      <!-- PC端始终显示菜单，移动端由isMenuOpen控制  -->
       <div id="nav" v-show="!isMobile || isMenuOpen">
         <ul id="navMenu">
           <li
@@ -37,7 +37,7 @@
                   @click="onSubMenuClick(item, c, i)"
                 >
                   <span>{{ c.ctitle }}</span>
-                  <div :style="{ backgroundImage: `url(${c.img})` }"></div>
+                  <div :style="{ backgroundImage: `url(${c.img})`}"></div>
                 </li>
               </ul>
             </div>
