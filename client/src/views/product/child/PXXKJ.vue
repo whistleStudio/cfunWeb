@@ -47,7 +47,7 @@
         ],
         bookList: [
           {title: "《义教版教学指南适配》", link: "https://dict.cfunworld.com/tutorial/starbox_yj/index.html"},
-          {title: "《苏教版教材适配》", link: "https://dict.cfunworld.com/img/cfweb/product/%E8%8B%8F%E6%95%99%E7%89%88%E6%95%99%E6%9D%90%E9%80%82%E9%85%8D%E6%B8%85%E5%8D%95.png"},
+          {title: "《苏教版教材适配》", link: "https://dict.cfunworld.com/tutorial/starbox_sj/index.html"},
         ]
       };
     },
