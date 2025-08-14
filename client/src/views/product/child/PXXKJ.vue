@@ -46,6 +46,7 @@
           }  
         ],
         bookList: [
+          {title: "《创趣星盒教程（综合版）》", link: "https://dict.cfunworld.com/tutorial/starbox_collection/index.html"},
           {title: "《义教版教学指南适配》", link: "https://dict.cfunworld.com/tutorial/starbox_yj/index.html"},
           {title: "《苏教版教材适配》", link: "https://dict.cfunworld.com/tutorial/starbox_sj/index.html"},
         ]
@@ -61,6 +62,7 @@ $curColor: #40bccb;
 .program {
   .books {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
     margin-bottom: 30px;
